@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — CLIC</title>
+  <meta name="description" content="Entre na sua conta CLIC para acessar seus projetos, finanças, horas e reembolsos.">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <aside class="auth-painel" aria-hidden="true">
+    <div class="auth-painel__logo">
+      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+    </div>
+    <div class="auth-painel__mensagem">
+      <div class="auth-painel__gantt">
+        <div class="auth-painel__etapa auth-painel__etapa--1"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--2"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--3"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--4"><i></i></div>
+      </div>
+      <div>
+        <h2 class="auth-painel__titulo">Cada etapa do projeto, no prazo e sob controle.</h2>
+        <p class="auth-painel__desc">Tarefas, horas, custos e reembolsos reunidos em um só lugar.</p>
+      </div>
+    </div>
+    <p class="auth-painel__copy">© 2026 CLIC</p>
+  </aside>
+
+  <main class="auth-acesso">
+    <div class="auth-bloco">
+      <div class="auth-logo-mobile">
+        <a href="index.html" aria-label="CLIC — início"><img src="assets/img/logo-oficial.png" alt="CLIC" width="60" height="72"></a>
+      </div>
+
+      <div class="clic-abas" role="tablist" aria-label="Acesso">
+        <a href="entrar.html" class="ativo" role="tab" aria-selected="true">Entrar</a>
+        <a href="criar-conta.html" role="tab" aria-selected="false">Criar conta</a>
+      </div>
+
+      <div class="auth-conteudo">
+        <div class="auth-intro">
+          <h1 class="auth-titulo" id="entrar-titulo">Bem-vindo de volta</h1>
+          <p class="auth-sub" id="entrar-sub">Entre para acessar seus projetos.</p>
+        </div>
+
+        <form class="auth-form" id="form-entrar" novalidate>
+          <div class="auth-campos">
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="entrar-email">E-mail</label>
+              <input class="clic-campo__input" type="email" id="entrar-email" name="email" placeholder="voce@empresa.com" autocomplete="email" required>
+              <p class="clic-campo__erro" role="alert">Informe um e-mail válido.</p>
+            </div>
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="entrar-senha">Senha</label>
+              <div class="clic-senha">
+                <input class="clic-campo__input" type="password" id="entrar-senha" name="senha" placeholder="••••••••••••" autocomplete="current-password" required>
+                <button class="clic-senha__olho" type="button" data-olho aria-label="Mostrar senha">
+                  <svg class="ic ic-20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <p class="clic-campo__erro" role="alert">Use pelo menos 8 caracteres.</p>
+            </div>
+          </div>
+
+          <div class="auth-prefs">
+            <label class="clic-check">
+              <input type="checkbox" id="entrar-manter" checked>
+              <span class="clic-check__texto">Manter conectado</span>
+            </label>
+            <a class="auth-link" href="esqueci-senha.html">Esqueci a senha</a>
+          </div>
+
+          <button class="clic-btn-auth" type="submit">Entrar</button>
+        </form>
+
+        <p class="auth-alternar">Ainda não tem conta?&nbsp; <a href="criar-conta.html">Criar conta</a></p>
+      </div>
+    </div>
+  </main>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/auth.js" defer></script>
+</body>
+</html>

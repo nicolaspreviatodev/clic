@@ -1,0 +1,85 @@
+/* =====================================================
+   CLIC — auth.css
+   Entrar / Criar conta / Esqueci senha (1440x1024)
+   ===================================================== */
+
+.auth-page{
+  min-height:100vh;display:flex;background:var(--clic-fundo-app);
+  font-family:var(--clic-font-jakarta);
+}
+
+/* ---------- Painel institucional 600px ---------- */
+.auth-painel{
+  width:600px;flex:none;background:var(--clic-navy);
+  padding:48px 56px;display:flex;flex-direction:column;justify-content:space-between;
+  min-height:100vh;
+}
+.auth-painel__logo{width:120px;height:144px}
+.auth-painel__logo img{width:120px;height:144px;object-fit:contain}
+.auth-painel__mensagem{display:flex;flex-direction:column;gap:44px;max-width:488px}
+.auth-painel__gantt{display:flex;flex-direction:column;gap:16px}
+.auth-painel__etapa{height:16px;position:relative}
+.auth-painel__etapa i{display:block;height:16px;border-radius:100px}
+.auth-painel__etapa--1 i{width:244px;background:var(--clic-azul-aco)}
+.auth-painel__etapa--2 i{width:288px;margin-left:68px;background:var(--clic-amarelo)}
+.auth-painel__etapa--3 i{width:256px;margin-left:140px;background:var(--clic-azul-aco)}
+.auth-painel__etapa--4 i{width:268px;margin-left:220px;background:rgba(255,255,255,.18)}
+.auth-painel__titulo{
+  font:800 38px/49px var(--clic-font-jakarta);letter-spacing:-1px;color:#fff;
+}
+.auth-painel__desc{
+  font:400 15px/25px var(--clic-font-jakarta);color:rgba(255,255,255,.74);
+  margin-top:24px;
+}
+.auth-painel__copy{font:400 13px/16px var(--clic-font-jakarta);color:rgba(255,255,255,.74)}
+
+/* ---------- Painel de acesso 840px ---------- */
+.auth-acesso{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:48px 24px;
+}
+.auth-bloco{width:440px;max-width:100%;display:flex;flex-direction:column;gap:32px}
+.auth-conteudo{display:flex;flex-direction:column;gap:28px}
+.auth-intro{display:flex;flex-direction:column;gap:8px}
+.auth-titulo{font:800 28px/36px var(--clic-font-jakarta);letter-spacing:-.7px;color:var(--clic-navy)}
+.auth-sub{font:400 15px/23px var(--clic-font-jakarta);color:var(--clic-texto-app)}
+.auth-form{display:flex;flex-direction:column;gap:20px}
+.auth-campos{display:flex;flex-direction:column;gap:20px}
+.auth-senhas{display:flex;gap:16px}
+.auth-senhas .clic-campo{flex:1;min-width:0}
+.auth-prefs{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.auth-link{font:600 14px/18px var(--clic-font-jakarta);color:var(--clic-navy)}
+.auth-link:hover{text-decoration:underline}
+.auth-alternar{
+  text-align:center;font:400 15px/22px var(--clic-font-jakarta);color:var(--clic-texto-app);
+}
+.auth-alternar a{font-weight:700;color:var(--clic-navy)}
+.auth-alternar a:hover{text-decoration:underline}
+.auth-voltar{
+  display:block;text-align:center;font:700 15px/22px var(--clic-font-jakarta);color:var(--clic-navy);
+}
+.auth-voltar:hover{text-decoration:underline}
+.auth-termos{display:flex;align-items:flex-start;gap:10px}
+.auth-termos .clic-check__texto{font-size:14px;line-height:22px}
+.auth-reenvio{font:400 14px/18px var(--clic-font-jakarta);color:var(--clic-texto-app)}
+.auth-reenvio a{font-weight:600;color:var(--clic-navy)}
+.auth-reenvio a:hover{text-decoration:underline}
+
+/* Etapas do esqueci-senha */
+.auth-etapa{display:none}
+.auth-etapa.ativa{display:flex;flex-direction:column;gap:28px}
+
+/* Logo mobile (aparece só < lg) */
+.auth-logo-mobile{display:none;margin-bottom:8px}
+.auth-logo-mobile img{width:60px;height:72px;object-fit:contain}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:991.98px){
+  .auth-painel{display:none}
+  .auth-acesso{padding:40px 24px}
+  .auth-logo-mobile{display:block}
+}
+@media (max-width:575.98px){
+  .auth-senhas{flex-direction:column}
+  .auth-prefs{flex-direction:column;align-items:flex-start;gap:12px}
+}

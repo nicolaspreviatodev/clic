@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuários e perfis — CLIC</title>
+  <meta name="description" content="CLIC — controle financeiro, projetos, horas e reembolsos.">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="clic-app">
+  <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
+    <a class="clic-sidebar__logo" href="dashboard-financeiro.html" aria-label="CLIC — dashboard">
+      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+    </a>
+    <nav class="clic-sidebar__menu" aria-label="Navegação do sistema">
+      <a class="clic-menu-btn" href="dashboard-financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>Dashboard</a>
+      <a class="clic-menu-btn" href="financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</a>
+      <a class="clic-menu-btn" href="projetos.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="M9 13h6"/></svg>Projetos</a>
+      <a class="clic-menu-btn" href="horas.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>Horas</a>
+      <a class="clic-menu-btn" href="em-construcao.html?secao=Reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
+      <a class="clic-menu-btn" href="usuarios.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Usuários</a>
+    </nav>
+    <div class="clic-sidebar__perfil">
+      <span class="clic-sidebar__avatar">CM</span>
+      <span class="clic-sidebar__nome">Carlos Milan</span>
+      <span class="clic-sidebar__cargo">Administrador</span>
+      <a class="clic-sidebar__sair" href="entrar.html" data-sair>Sair</a>
+    </div>
+  </aside>
+  <main class="clic-app__main">
+    <div class="app-topo">
+      <h1 class="clic-app__titulo">Usuários e perfis</h1>
+      <a class="app-btn-novo" href="#" onclick="return false"><svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Novo usuário</a>
+    </div>
+    <div class="app-filtros">
+      <div class="app-filtros__grupo">
+        <div class="clic-busca" style="width:220px">
+          <input class="clic-input" placeholder="Buscar por nome ou e-mail" aria-label="Buscar por nome ou e-mail">
+          <span class="clic-busca__icone"><svg class="ic ic-14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        </div>
+        <button class="clic-input clic-input--select" type="button">Perfil: Todos</button>
+        <button class="clic-input clic-input--select" type="button">Status: Todos</button>
+      </div>
+    </div>
+    <div class="clic-tabela-wrap">
+      <div class="table-responsive">
+        <table class="clic-tabela">
+          <thead>
+            <tr><th>Nome</th><th>E-mail</th><th>Perfil</th><th>Status</th><th>Último acesso</th><th>Ações</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Carlos Milan</td><td>carloseduardomilann@gmail.com</td><td><span class="clic-badge clic-badge--navy">Administrador</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 09:12</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Carlos Milan">Excluir</a></td></tr>
+            <tr><td>Nicolas Silva</td><td>nicolassilvapreviato@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 08:40</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Nicolas Silva">Excluir</a></td></tr>
+            <tr><td>Luccas Matheus</td><td>luccas.matheus@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 17:55</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Luccas Matheus">Excluir</a></td></tr>
+            <tr><td>Lucas Willian</td><td>salinhastropa@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 14:20</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Lucas Willian">Excluir</a></td></tr>
+            <tr><td>Matheus Prudente</td><td>matheusprudente@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--cinza">Inativo</span></td><td>21/10 10:03</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Matheus Prudente">Excluir</a></td></tr>
+            <tr><td>Luiz Bueno</td><td>luizbueno@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>04/11 11:30</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Luiz Bueno">Excluir</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-excluir" tabindex="-1" aria-labelledby="modal-excluir-titulo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width:420px">
+        <div class="modal-content" style="border-radius:12px;border-color:var(--clic-borda)">
+          <div class="modal-header" style="border-color:var(--clic-borda)">
+            <h2 class="modal-title" id="modal-excluir-titulo" style="font:700 18px var(--clic-font-inter);color:var(--clic-navy)">Excluir usuário</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body" style="font:400 14px/22px var(--clic-font-inter);color:var(--clic-texto-app)">
+            Tem certeza de que deseja excluir <strong id="modal-excluir-nome">este usuário</strong>? Esta ação não pode ser desfeita.
+          </div>
+          <div class="modal-footer" style="border-color:var(--clic-borda)">
+            <button type="button" class="clic-btn-app clic-btn-app--contorno" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="clic-btn-app" id="modal-excluir-confirmar" style="background:var(--clic-erro);color:#fff">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/app.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editar usuário — CLIC</title>
+  <meta name="description" content="CLIC — controle financeiro, projetos, horas e reembolsos.">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="clic-app">
+  <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
+    <a class="clic-sidebar__logo" href="dashboard-financeiro.html" aria-label="CLIC — dashboard">
+      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+    </a>
+    <nav class="clic-sidebar__menu" aria-label="Navegação do sistema">
+      <a class="clic-menu-btn" href="dashboard-financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>Dashboard</a>
+      <a class="clic-menu-btn" href="financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</a>
+      <a class="clic-menu-btn" href="projetos.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="M9 13h6"/></svg>Projetos</a>
+      <a class="clic-menu-btn" href="horas.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>Horas</a>
+      <a class="clic-menu-btn" href="em-construcao.html?secao=Reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
+      <a class="clic-menu-btn" href="usuarios.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Usuários</a>
+    </nav>
+    <div class="clic-sidebar__perfil">
+      <span class="clic-sidebar__avatar">CM</span>
+      <span class="clic-sidebar__nome">Carlos Milan</span>
+      <span class="clic-sidebar__cargo">Administrador</span>
+      <a class="clic-sidebar__sair" href="entrar.html" data-sair>Sair</a>
+    </div>
+  </aside>
+  <main class="clic-app__main">
+    <div class="app-topo">
+      <h1 class="clic-app__titulo">Editar usuário</h1>
+    </div>
+
+    <section class="usuario-dados">
+      <h2 class="app-titulo-secao">Dados do usuário</h2>
+      <div class="usuario-dados__grid">
+        <div class="usuario-dados__campo">
+          <label class="usuario-dados__label" for="edit-nome">Nome</label>
+          <input class="clic-input" id="edit-nome" value="Luccas Matheus">
+        </div>
+        <div class="usuario-dados__campo">
+          <label class="usuario-dados__label" for="edit-email">E-mail</label>
+          <input class="clic-input" id="edit-email" type="email" value="luccas.matheus@gmail.com">
+        </div>
+        <div class="usuario-dados__campo">
+          <label class="usuario-dados__label" for="edit-perfil">Perfil</label>
+          <select class="clic-input clic-input--select" id="edit-perfil">
+            <option>Administrador</option><option selected>Gestor</option><option>Funcionário</option>
+          </select>
+        </div>
+        <div class="usuario-dados__campo">
+          <label class="usuario-dados__label" for="edit-status">Status</label>
+          <select class="clic-input clic-input--select" id="edit-status">
+            <option selected>Ativo</option><option>Inativo</option>
+          </select>
+        </div>
+      </div>
+      <p class="usuario-dados__nota">O perfil define as permissões abaixo. Você pode ajustá-las para este usuário.</p>
+    </section>
+
+    <section class="usuario-permissoes">
+      <h2 class="usuario-permissoes__titulo">Permissões por tela</h2>
+      <div class="table-responsive">
+        <table class="perm-table">
+          <thead>
+            <tr><th>Tela</th><th>Ver</th><th>Incluir</th><th>Editar</th><th>Excluir</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Horas</td>
+              <td><input class="perm-check" type="checkbox" checked aria-label="Horas — Ver"></td>
+              <td><input class="perm-check" type="checkbox" checked aria-label="Horas — Incluir"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Horas — Editar"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Horas — Excluir"></td>
+            </tr>
+            <tr>
+              <td>Financeiro</td>
+              <td><input class="perm-check" type="checkbox" checked aria-label="Financeiro — Ver"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Financeiro — Incluir"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Financeiro — Editar"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Financeiro — Excluir"></td>
+            </tr>
+            <tr>
+              <td>Projetos e orçamento</td>
+              <td><input class="perm-check" type="checkbox" checked aria-label="Projetos e orçamento — Ver"></td>
+              <td><input class="perm-check" type="checkbox" checked aria-label="Projetos e orçamento — Incluir"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Projetos e orçamento — Editar"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Projetos e orçamento — Excluir"></td>
+            </tr>
+            <tr>
+              <td>Dashboard</td>
+              <td><input class="perm-check" type="checkbox" checked aria-label="Dashboard — Ver"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Dashboard — Incluir"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Dashboard — Editar"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Dashboard — Excluir"></td>
+            </tr>
+            <tr>
+              <td>Usuários e perfis</td>
+              <td><input class="perm-check" type="checkbox" aria-label="Usuários e perfis — Ver"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Usuários e perfis — Incluir"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Usuários e perfis — Editar"></td>
+              <td><input class="perm-check" type="checkbox" aria-label="Usuários e perfis — Excluir"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="usuario-acoes">
+        <button class="clic-btn-app clic-btn-app--grande" type="button" data-salvar>Salvar alterações</button>
+        <a class="clic-btn-app clic-btn-app--contorno" href="usuarios.html">Cancelar</a>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/app.js" defer></script>
+
+</body>
+</html>

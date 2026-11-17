@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criar conta — CLIC</title>
+  <meta name="description" content="Crie sua conta no CLIC e organize finanças, projetos, horas e reembolsos em um só lugar.">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <aside class="auth-painel" aria-hidden="true">
+    <div class="auth-painel__logo">
+      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+    </div>
+    <div class="auth-painel__mensagem">
+      <div class="auth-painel__gantt">
+        <div class="auth-painel__etapa auth-painel__etapa--1"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--2"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--3"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--4"><i></i></div>
+      </div>
+      <div>
+        <h2 class="auth-painel__titulo">Cada etapa do projeto, no prazo e sob controle.</h2>
+        <p class="auth-painel__desc">Tarefas, horas, custos e reembolsos reunidos em um só lugar.</p>
+      </div>
+    </div>
+    <p class="auth-painel__copy">© 2026 CLIC</p>
+  </aside>
+
+  <main class="auth-acesso">
+    <div class="auth-bloco">
+      <div class="auth-logo-mobile">
+        <a href="index.html" aria-label="CLIC — início"><img src="assets/img/logo-oficial.png" alt="CLIC" width="60" height="72"></a>
+      </div>
+
+      <div class="clic-abas" role="tablist" aria-label="Acesso">
+        <a href="entrar.html" role="tab" aria-selected="false">Entrar</a>
+        <a href="criar-conta.html" class="ativo" role="tab" aria-selected="true">Criar conta</a>
+      </div>
+
+      <div class="auth-conteudo">
+        <div class="auth-intro">
+          <h1 class="auth-titulo">Crie sua conta</h1>
+          <p class="auth-sub">Leva menos de um minuto.</p>
+        </div>
+
+        <form class="auth-form" id="form-criar" novalidate>
+          <div class="auth-campos">
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="criar-nome">Nome completo</label>
+              <input class="clic-campo__input" type="text" id="criar-nome" name="nome" placeholder="Mariana Costa" autocomplete="name" required>
+              <p class="clic-campo__erro" role="alert">Informe seu nome completo.</p>
+            </div>
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="criar-email">E-mail</label>
+              <input class="clic-campo__input" type="email" id="criar-email" name="email" placeholder="mariana@empresa.com" autocomplete="email" required>
+              <p class="clic-campo__erro" role="alert">Informe um e-mail válido.</p>
+            </div>
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="criar-empresa">Empresa (opcional)</label>
+              <input class="clic-campo__input" type="text" id="criar-empresa" name="empresa" placeholder="Estúdio Norte" autocomplete="organization">
+            </div>
+            <div class="auth-senhas">
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="criar-senha">Senha</label>
+                <div class="clic-senha">
+                  <input class="clic-campo__input" type="password" id="criar-senha" name="senha" placeholder="••••••••••••" autocomplete="new-password" required>
+                  <button class="clic-senha__olho" type="button" data-olho aria-label="Mostrar senha">
+                    <svg class="ic ic-20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+                <div class="clic-forca" data-forca="criar-senha" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                <p class="clic-campo__erro" role="alert">Use pelo menos 8 caracteres.</p>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="criar-confirmar">Confirmar senha</label>
+                <div class="clic-senha">
+                  <input class="clic-campo__input" type="password" id="criar-confirmar" name="confirmar" placeholder="••••••••••••" autocomplete="new-password" required>
+                  <button class="clic-senha__olho" type="button" data-olho aria-label="Mostrar senha">
+                    <svg class="ic ic-20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+                <p class="clic-campo__erro" role="alert">As senhas não coincidem.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-termos">
+            <label class="clic-check">
+              <input type="checkbox" id="criar-termos" name="termos" required>
+              <span class="clic-check__texto">Li e concordo com os termos de uso e a política de privacidade.</span>
+            </label>
+          </div>
+
+          <button class="clic-btn-auth" type="submit">Criar conta</button>
+        </form>
+
+        <p class="auth-alternar">Já tem uma conta? <a href="entrar.html">Entrar</a></p>
+      </div>
+    </div>
+  </main>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/auth.js" defer></script>
+</body>
+</html>

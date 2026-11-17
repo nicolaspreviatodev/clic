@@ -1,0 +1,444 @@
+/* =====================================================
+   CLIC — components.css
+   Componentes compartilhados (valores exatos do Figma)
+   ===================================================== */
+
+/* ---------- Container ---------- */
+.container.container-clic{max-width:1200px;padding-inline:24px}
+@media (min-width:1248px){.container.container-clic{padding-inline:0}}
+
+/* =====================================================
+   HEADER (landing/sobre) — 1440x88, borda inferior 1px
+   ===================================================== */
+.clic-header{
+  height:88px;background:#fff;
+  border-bottom:1px solid var(--clic-borda);
+  transition:box-shadow .2s ease;
+}
+.clic-header.sombra{box-shadow:var(--clic-sombra)}
+.clic-header .container{height:88px;display:flex;align-items:center;justify-content:space-between;position:relative}
+.clic-header__logo img{width:47px;height:56px;object-fit:contain}
+.clic-nav{
+  display:flex;gap:40px;align-items:flex-start;
+}
+@media (min-width:992px){
+  .clic-nav{position:absolute;left:50%;transform:translateX(-50%);top:21px}
+}
+.clic-nav__link{
+  position:relative;padding-block:12px;
+  font:400 18px/22px var(--clic-font-inter);
+  color:var(--clic-texto);
+}
+.clic-nav__link:hover{color:var(--clic-navy)}
+.clic-nav__link::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--clic-amarelo);transform:scaleX(0);transform-origin:left;
+  transition:transform .2s ease;
+}
+.clic-nav__link:hover::after{transform:scaleX(1)}
+.clic-nav__link.ativo{
+  font-weight:600;color:var(--clic-navy);
+}
+.clic-nav__link.ativo::after{transform:scaleX(1)}
+.clic-header__acoes{display:flex;gap:8px;align-items:center}
+
+/* Botões do header */
+.btn-clic{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:40px;padding-inline:20px;border-radius:var(--clic-r-botao);
+  font:600 16px/19px var(--clic-font-inter);
+  color:var(--clic-navy);border:1px solid transparent;
+  transition:background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+  white-space:nowrap;
+}
+.btn-clic--branco{background:#fff;border-color:#fff}
+.btn-clic--branco:hover{background:var(--clic-azul-claro)}
+.btn-clic--amarelo{background:var(--clic-amarelo);border-color:#fff;color:var(--clic-navy)}
+.btn-clic--amarelo:hover{background:var(--clic-amarelo-hover);transform:translateY(-1px);box-shadow:var(--clic-sombra)}
+.btn-clic--amarelo:active{transform:translateY(0)}
+
+/* Botão grande (hero/CTA) */
+.btn-clic--grande{
+  height:56px;padding-inline:24px;font:600 18px/22px var(--clic-font-inter);
+  border-radius:var(--clic-r-botao);
+}
+.btn-clic--cta{
+  height:70px;padding-inline:32px;font:600 20px/24px var(--clic-font-inter);
+  border-radius:var(--clic-r-botao);
+}
+
+/* =====================================================
+   FOOTER — fundo #EAF1F9, borda 1px #D5E1EE
+   ===================================================== */
+.clic-footer{
+  background:var(--clic-azul-claro);
+  border-top:1px solid var(--clic-footer-borda);
+  padding:80px 0 40px;
+}
+.clic-footer__topo{display:flex;gap:48px;padding-bottom:40px;align-items:flex-start;min-height:198px}
+.clic-footer__marca{width:320px;flex:none}
+.clic-footer__marca img{width:47px;height:56px;object-fit:contain;margin-bottom:16px}
+.clic-footer__marca p{font:400 16px/26px var(--clic-font-inter);color:var(--clic-texto)}
+.clic-footer__col{display:flex;flex-direction:column;gap:12px}
+.clic-footer__col h3{font:600 16px/19px var(--clic-font-inter);color:var(--clic-navy);margin-bottom:3px}
+.clic-footer__col a{font:400 16px/19px var(--clic-font-inter);color:var(--clic-texto)}
+.clic-footer__col a:hover{color:var(--clic-navy)}
+.clic-footer__links{width:160px;flex:none}
+.clic-footer__redes{width:196px;flex:none}
+.clic-footer__icones{display:flex;gap:12px;margin-top:12px}
+.clic-footer__icones a{
+  width:40px;height:40px;border-radius:20px;background:#fff;border:1px solid var(--clic-borda);
+  display:flex;align-items:center;justify-content:center;color:var(--clic-azul-aco);
+  transition:background-color .18s ease,border-color .18s ease,color .18s ease;
+}
+.clic-footer__icones a:hover{background:var(--clic-amarelo);border-color:var(--clic-amarelo);color:var(--clic-navy)}
+.clic-footer__contato{width:240px;flex:none}
+.clic-footer__divisor{height:1px;background:rgba(79,118,160,.25);margin-bottom:40px;margin-top:0}
+.clic-footer__copy{font:400 14px/17px var(--clic-font-inter);color:var(--clic-texto)}
+
+/* =====================================================
+   SEÇÕES landing
+   ===================================================== */
+.clic-section{padding-block:var(--clic-pad-secao)}
+.clic-eyebrow{
+  font:600 16px/19px var(--clic-font-inter);
+  letter-spacing:1.6px;text-transform:uppercase;text-align:center;
+}
+.clic-titulo-secao{
+  font:700 42px/1.2 var(--clic-font-jakarta);
+  letter-spacing:-1.2px;text-align:center;color:var(--clic-navy);
+}
+.clic-apresentacao{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:1200px;margin:0 auto}
+.clic-apresentacao .clic-titulo-secao{margin-top:0}
+
+/* =====================================================
+   BOTÕES de menu (sidebar) — 200x48 r8
+   ===================================================== */
+.clic-menu-btn{
+  width:200px;height:48px;border-radius:var(--clic-r-botao);
+  display:flex;align-items:center;gap:10px;padding:0 16px;
+  font:500 16px/19px var(--clic-font-inter);
+  color:var(--clic-navy);background:transparent;
+  border:1px solid var(--clic-borda);
+  transition:background-color .18s ease,border-color .18s ease,color .18s ease;
+  text-align:left;
+}
+.clic-menu-btn .ic{width:18px;height:18px;color:var(--clic-navy)}
+.clic-menu-btn:hover{background:var(--clic-menu-hover);border-color:transparent}
+.clic-menu-btn.ativo{background:var(--clic-amarelo);border-color:transparent}
+.clic-menu-btn.ativo:hover{background:var(--clic-menu-hover)}
+.clic-menu-btn:focus-visible{border-color:var(--clic-borda);box-shadow:var(--clic-foco)}
+
+/* =====================================================
+   SIDEBAR do app — 240px navy
+   ===================================================== */
+.clic-sidebar{
+  width:240px;flex:none;background:var(--clic-navy);
+  min-height:100vh;position:sticky;top:0;align-self:flex-start;
+  display:flex;flex-direction:column;padding:32px 20px 20px;
+}
+.clic-sidebar__logo{width:120px;height:144px;margin:0 0 23px 34px}
+.clic-sidebar__logo img{width:120px;height:144px;object-fit:contain}
+.clic-sidebar__menu{display:flex;flex-direction:column;gap:16px;width:200px}
+.clic-sidebar__menu .clic-menu-btn{border-color:#E2E8F0}
+.clic-sidebar__perfil{
+  margin-top:auto;padding-top:37px;border-top:1px solid var(--clic-azul-aco);
+  display:grid;grid-template-columns:36px 1fr auto;grid-template-rows:auto auto;
+  column-gap:10px;align-items:center;width:200px;
+}
+.clic-sidebar__avatar{
+  grid-row:1/3;width:36px;height:36px;border-radius:50%;
+  background:var(--clic-amarelo);display:flex;align-items:center;justify-content:center;
+  font:700 13px/16px var(--clic-font-inter);color:var(--clic-navy);
+}
+.clic-sidebar__nome{font:700 14px/17px var(--clic-font-inter);color:#F5F5F5}
+.clic-sidebar__cargo{font:400 12px/15px var(--clic-font-inter);color:rgba(245,245,245,.7)}
+.clic-sidebar__sair{
+  grid-row:1/3;font:700 13px/16px var(--clic-font-inter);color:var(--clic-amarelo);
+  justify-self:end;
+}
+.clic-sidebar__sair:hover{text-decoration:underline}
+
+/* =====================================================
+   APP — layout geral
+   ===================================================== */
+.clic-app{display:flex;min-height:100vh;background:var(--clic-fundo-app)}
+.clic-app__main{flex:1;padding:48px 32px 48px 32px;min-width:0}
+.clic-app__titulo{font:700 28px/34px var(--clic-font-inter);color:var(--clic-navy)}
+
+/* =====================================================
+   INPUTS de app/filtros — h40 r8 borda #4F76A0
+   ===================================================== */
+.clic-input{
+  height:40px;border:1px solid var(--clic-azul-aco);border-radius:8px;background:#fff;
+  display:flex;align-items:center;padding:0 16px;width:100%;
+  font:400 14px/17px var(--clic-font-inter);color:var(--clic-texto-app);
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.clic-input::placeholder{color:var(--clic-texto-app);opacity:1}
+.clic-input:focus{border-color:var(--clic-navy);box-shadow:var(--clic-foco);outline:none}
+input.clic-input,select.clic-input{appearance:none}
+.clic-input--select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234F76A0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  padding-right:30px;
+}
+.clic-busca{position:relative}
+.clic-busca .clic-input{padding-right:32px}
+.clic-busca__icone{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--clic-azul-aco)}
+
+/* Botões de app */
+.clic-btn-icone{
+  width:40px;height:40px;border-radius:8px;background:var(--clic-amarelo);
+  display:inline-flex;align-items:center;justify-content:center;color:var(--clic-navy);
+  transition:background-color .18s ease;
+}
+.clic-btn-icone:hover{background:var(--clic-amarelo-hover)}
+.clic-btn-app{
+  height:40px;padding:0 20px;border-radius:8px;background:var(--clic-amarelo);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font:700 14px/17px var(--clic-font-inter);color:var(--clic-navy);
+  transition:background-color .18s ease;
+}
+.clic-btn-app:hover{background:var(--clic-amarelo-hover)}
+.clic-btn-app--contorno{background:#fff;border:1px solid var(--clic-azul-aco);color:var(--clic-navy)}
+.clic-btn-app--contorno:hover{background:var(--clic-azul-claro)}
+.clic-btn-app--grande{height:44px;padding:0 24px}
+.clic-btn-app--mini{height:39px;padding:0 20px;font-weight:700}
+
+/* =====================================================
+   KPI cards — 368x96 r12
+   ===================================================== */
+.clic-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.clic-kpi{
+  height:96px;border-radius:12px;background:#fff;padding:22px 24px;
+  display:flex;flex-direction:column;gap:9px;
+}
+.clic-kpi__rotulo{font:400 14px/17px var(--clic-font-inter);color:var(--clic-texto-app)}
+.clic-kpi__valor{font:700 28px/34px var(--clic-font-inter);color:var(--clic-navy)}
+.clic-kpi--escuro{background:var(--clic-navy)}
+.clic-kpi--escuro .clic-kpi__rotulo{color:#F5F5F5}
+.clic-kpi--escuro .clic-kpi__valor{color:var(--clic-amarelo)}
+
+/* KPI dashboards — 368x104 */
+.clic-kpi--dash{height:104px;padding:18px 24px}
+.clic-kpi--dash .clic-kpi__valor{font-size:26px;line-height:31px}
+.clic-kpi__nota{font:400 13px/16px var(--clic-font-inter);color:var(--clic-texto-app)}
+.clic-kpi--escuro .clic-kpi__nota{color:#F5F5F5}
+
+/* =====================================================
+   TABELAS do app
+   ===================================================== */
+.clic-tabela-wrap{background:#fff;border-radius:12px;overflow:hidden}
+.clic-tabela{width:100%;border-collapse:collapse;font-family:var(--clic-font-inter)}
+.clic-tabela thead th{
+  height:48px;background:var(--clic-navy);color:#F5F5F5;
+  font:700 14px/17px var(--clic-font-inter);text-align:left;
+  padding:0 20px;white-space:nowrap;vertical-align:middle;
+}
+.clic-tabela tbody td{
+  height:52px;padding:0 20px;font:400 14px/17px var(--clic-font-inter);
+  color:var(--clic-texto-app);vertical-align:middle;
+}
+.clic-tabela tbody tr:nth-child(even){background:var(--clic-zebra)}
+.clic-tabela tbody tr{transition:background-color .15s ease}
+.clic-tabela tbody tr:hover{background:var(--clic-azul-claro)}
+.clic-tabela .num{text-align:right;font-variant-numeric:tabular-nums}
+.clic-tabela .neg{color:var(--clic-ambar-texto)}
+.clic-tabela .pos{color:var(--clic-azul-aco);font-weight:700}
+.clic-tabela .forte{font-weight:700;color:var(--clic-navy)}
+.clic-tabela a{font:700 14px/17px var(--clic-font-inter)}
+.clic-tabela .acao-editar{color:var(--clic-azul-aco)}
+.clic-tabela .acao-excluir{color:var(--clic-ambar-texto)}
+.clic-tabela .acao-editar:hover,.clic-tabela .acao-excluir:hover{text-decoration:underline}
+
+/* =====================================================
+   BADGES
+   ===================================================== */
+.clic-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:24px;padding:0 12px;border-radius:999px;
+  font:700 13px/16px var(--clic-font-inter);white-space:nowrap;
+}
+.clic-badge--azul{background:var(--clic-badge-azul);color:var(--clic-navy)}
+.clic-badge--amarelo{background:var(--clic-badge-amarelo);color:var(--clic-ambar-texto)}
+.clic-badge--navy{background:var(--clic-navy);color:#F5F5F5}
+.clic-badge--cinza{background:#EDEDED;color:#6B7A7D}
+.clic-badge--status{
+  height:18px;padding:0 10px 0 6px;gap:5px;border:1px solid;border-radius:10px;
+  font:500 12px/16px var(--clic-font-inter);font-weight:500;
+}
+.clic-badge--status .ponto{width:8px;height:8px;border-radius:50%;background:currentColor}
+.clic-badge--sucesso{background:#CFF1DD;border-color:#008C45;color:#008C45}
+.clic-badge--info{background:#C9EAFF;border-color:#006AC9;color:#006AC9}
+.clic-badge--perigo{background:#FFDAD8;border-color:#B61E35;color:#D64545}
+.clic-badge--aviso{background:#FFF6D3;border-color:#A97802;color:#A97802}
+.clic-badge--inativo{background:#F0F2F3;border-color:#5E676F;color:#5E676F}
+.clic-badge--sim{background:var(--clic-badge-azul);color:var(--clic-navy)}
+.clic-badge--nao{background:var(--clic-badge-amarelo);color:var(--clic-ambar-texto)}
+
+/* =====================================================
+   CARDS
+   ===================================================== */
+.clic-card{
+  background:#fff;border:1px solid var(--clic-borda);border-radius:var(--clic-r-card);
+}
+
+/* =====================================================
+   INPUTS de autenticação — label 14/600 + input h48 r10
+   ===================================================== */
+.clic-campo{display:flex;flex-direction:column;gap:8px}
+.clic-campo__label{font:600 14px/18px var(--clic-font-jakarta);color:var(--clic-navy)}
+.clic-campo__input{
+  height:48px;width:100%;border:1.5px solid var(--clic-borda-input);border-radius:var(--clic-r-input);
+  background:#fff;padding:0 14px;
+  font:400 15px/19px var(--clic-font-jakarta);color:var(--clic-texto-app);
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.clic-campo__input::placeholder{color:var(--clic-placeholder)}
+.clic-campo__input:hover{border-color:var(--clic-azul-aco)}
+.clic-campo__input:focus{border-color:var(--clic-navy);box-shadow:var(--clic-foco);outline:none}
+.clic-campo--erro .clic-campo__input{border-color:var(--clic-erro-input)}
+.clic-campo__erro{font:400 13px/18px var(--clic-font-jakarta);color:var(--clic-erro-input);display:none}
+.clic-campo--erro .clic-campo__erro{display:block}
+
+/* Campo de senha com botão olho */
+.clic-senha{position:relative}
+.clic-senha .clic-campo__input{padding-right:44px;letter-spacing:.5px}
+.clic-senha__olho{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  color:var(--clic-azul-aco);
+}
+.clic-senha__olho:hover{color:var(--clic-navy)}
+
+/* Força da senha: 4 segmentos 4px r2 gap 4 */
+.clic-forca{display:flex;gap:4px;margin-top:10px;height:4px}
+.clic-forca span{flex:1;height:4px;border-radius:2px;background:var(--clic-borda-input)}
+.clic-forca span.on{background:var(--clic-azul-aco)}
+
+/* Checkbox auth 18x18 r6 */
+.clic-check{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.clic-check input{
+  appearance:none;-webkit-appearance:none;margin:0;
+  width:18px;height:18px;border-radius:var(--clic-r-checkbox);
+  border:1.5px solid var(--clic-borda-input);background:#fff;flex:none;
+  transition:background-color .15s ease,border-color .15s ease;
+  background-repeat:no-repeat;background-position:center;
+}
+.clic-check input:hover{border-color:var(--clic-azul-aco)}
+.clic-check input:checked{
+  background-color:var(--clic-navy);border-color:var(--clic-navy);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+}
+.clic-check input:focus-visible{box-shadow:var(--clic-foco);outline:none}
+.clic-check__texto{font:400 14px/18px var(--clic-font-jakarta);color:var(--clic-texto-app)}
+
+/* Botão auth — h50 r10 */
+.clic-btn-auth{
+  height:50px;width:100%;border-radius:var(--clic-r-input);
+  background:var(--clic-amarelo);color:var(--clic-navy);
+  font:700 16px/20px var(--clic-font-jakarta);
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border:1.5px solid transparent;
+  transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.clic-btn-auth:hover{background:var(--clic-amarelo-hover)}
+.clic-btn-auth:focus-visible{border-color:var(--clic-navy);box-shadow:var(--clic-foco)}
+.clic-btn-auth[disabled]{opacity:.9;cursor:progress}
+.clic-btn-auth .ic{animation:none}
+.clic-btn-auth.carregando .ic{animation:girar .8s linear infinite}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+/* Abas auth — 440x48 fundo #E6E9ED r12 p4 */
+.clic-abas{
+  display:flex;gap:4px;padding:4px;background:var(--clic-abas);
+  border-radius:12px;width:100%;height:48px;
+}
+.clic-abas a{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  border-radius:var(--clic-r-aba);height:40px;
+  font:600 14px/18px var(--clic-font-jakarta);color:var(--clic-texto-sec);
+  transition:background-color .18s ease,color .18s ease;
+}
+.clic-abas a:hover{color:var(--clic-navy)}
+.clic-abas a.ativo{background:#fff;color:var(--clic-navy);font-weight:700}
+
+/* =====================================================
+   MOCKUPS da landing (mini app)
+   ===================================================== */
+.clic-mockup{
+  width:600px;max-width:100%;background:#fff;border:1px solid var(--clic-borda);
+  border-radius:12px;overflow:hidden;
+}
+.clic-mockup__barra{
+  height:48px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;border-bottom:1px solid var(--clic-borda);background:#fff;
+}
+.clic-mockup__marca{
+  font:800 20px/25px var(--clic-font-jakarta);letter-spacing:-.8px;color:var(--clic-navy);
+}
+.clic-mockup__perfil{display:flex;align-items:center;gap:8px}
+.clic-mockup__perfil .ic{width:14px;height:14px;color:var(--clic-azul-aco)}
+.clic-mockup__sep{width:1px;height:16px;background:rgba(79,118,160,.25)}
+.clic-mockup__nome{font:600 12px/15px var(--clic-font-inter);color:var(--clic-texto)}
+.clic-mockup__avatar{
+  width:24px;height:24px;border-radius:50%;background:var(--clic-azul-mockup);
+  display:flex;align-items:center;justify-content:center;
+  font:600 10px/12px var(--clic-font-inter);color:var(--clic-navy);
+}
+.clic-mockup__area{display:flex}
+.clic-mockup__menu{
+  width:110px;flex:none;border-right:1px solid var(--clic-borda);background:#fff;
+  padding:20px 10px;display:flex;flex-direction:column;gap:8px;position:relative;
+}
+.clic-mockup__item{
+  height:32px;border-radius:6px;display:flex;align-items:center;gap:6px;padding:0 8px;
+  font:400 11px/13px var(--clic-font-inter);color:var(--clic-texto);
+}
+.clic-mockup__item .ic{width:12px;height:12px;color:var(--clic-azul-aco)}
+.clic-mockup__item.ativo{background:var(--clic-azul-mockup);font-weight:600;color:var(--clic-navy)}
+.clic-mockup__ajuda{
+  margin-top:auto;display:flex;gap:6px;align-items:flex-start;
+  font:400 10px/12px var(--clic-font-inter);color:var(--clic-texto);
+}
+.clic-mockup__ajuda .ic{width:12px;height:12px;color:var(--clic-azul-aco);margin-top:2px}
+.clic-mockup__painel{flex:1;padding:20px}
+.clic-mockup__topo{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.clic-mockup__titulo{font:600 18px/22px var(--clic-font-inter);color:var(--clic-navy)}
+.clic-mockup__sub{font:400 12px/15px var(--clic-font-inter);color:var(--clic-texto);margin-top:5px}
+.clic-mockup__filtro{
+  height:29px;border:1px solid var(--clic-borda);border-radius:6px;
+  display:flex;align-items:center;gap:8px;padding:0 8px;
+  font:400 11px/13px var(--clic-font-inter);color:var(--clic-texto);
+}
+.clic-mockup__filtro .ic{width:10px;height:10px;color:var(--clic-azul-aco)}
+.clic-mockup__kpis{display:flex;gap:8px;margin-bottom:16px}
+.clic-mockup__kpi{
+  flex:1;border:1px solid var(--clic-borda);border-radius:8px;padding:12px;
+  min-width:0;
+}
+.clic-mockup__kpi-rotulo{font:400 12px/15px var(--clic-font-inter);color:var(--clic-azul-aco)}
+.clic-mockup__kpi-valor{font:600 20px/24px var(--clic-font-inter);color:var(--clic-navy);margin-top:8px}
+.clic-mockup__kpi-nota{font:400 11px/13px var(--clic-font-inter);color:var(--clic-navy);margin-top:8px;display:flex;align-items:center;gap:4px}
+.clic-mockup__kpi-nota .ic{width:10px;height:10px}
+.clic-mockup__kpi-nota.verde .ic{color:var(--clic-sucesso)}
+.clic-mockup__kpi-nota.vermelho{color:var(--clic-vermelho-landing)}
+.clic-mockup__kpi-nota.vermelho .ic{color:var(--clic-vermelho-landing)}
+.clic-mockup__card{border:1px solid var(--clic-borda);border-radius:8px;padding:14px;margin-bottom:16px}
+.clic-mockup__card-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.clic-mockup__card-titulo{font:600 13px/16px var(--clic-font-inter);color:var(--clic-navy)}
+.clic-mockup__legenda{display:flex;align-items:center;gap:5px;font:400 10px/12px var(--clic-font-inter);color:var(--clic-texto)}
+.clic-mockup__legenda i{width:5px;height:5px;border-radius:50%;background:var(--clic-azul-aco)}
+.clic-mockup__categorias{display:flex;flex-direction:column;gap:10px}
+.clic-mockup__cat-topo{display:flex;justify-content:space-between;font:400 12px/15px var(--clic-font-inter);color:var(--clic-texto)}
+.clic-mockup__cat-topo b{font-weight:600;color:var(--clic-navy)}
+.clic-mockup__barra-prog{height:8px;border-radius:999px;background:var(--clic-borda);margin-top:8px;overflow:hidden}
+.clic-mockup__barra-prog i{display:block;height:8px;border-radius:999px;background:var(--clic-azul-aco)}
+
+/* =====================================================
+   Utilitários de layout do projeto
+   ===================================================== */
+.clic-hero{position:relative;overflow:hidden}
+.clic-flex{display:flex}
+.clic-col{display:flex;flex-direction:column}

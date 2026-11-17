@@ -1,0 +1,9 @@
+# dependências e artefatos de verificação
+node_modules/
+diff/
+capturas/
+hero-check.png
+spec/
+
+# configuração local do preview
+.claude/

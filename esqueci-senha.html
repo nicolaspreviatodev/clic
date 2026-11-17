@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recuperar senha — CLIC</title>
+  <meta name="description" content="Recupere o acesso à sua conta CLIC em poucas etapas.">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+
+  <aside class="auth-painel" aria-hidden="true">
+    <div class="auth-painel__logo">
+      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+    </div>
+    <div class="auth-painel__mensagem">
+      <div class="auth-painel__gantt">
+        <div class="auth-painel__etapa auth-painel__etapa--1"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--2"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--3"><i></i></div>
+        <div class="auth-painel__etapa auth-painel__etapa--4"><i></i></div>
+      </div>
+      <div>
+        <h2 class="auth-painel__titulo">Cada etapa do projeto, no prazo e sob controle.</h2>
+        <p class="auth-painel__desc">Tarefas, horas, custos e reembolsos reunidos em um só lugar.</p>
+      </div>
+    </div>
+    <p class="auth-painel__copy">© 2026 CLIC</p>
+  </aside>
+
+  <main class="auth-acesso">
+    <div class="auth-bloco">
+      <div class="auth-logo-mobile">
+        <a href="index.html" aria-label="CLIC — início"><img src="assets/img/logo-oficial.png" alt="CLIC" width="60" height="72"></a>
+      </div>
+
+      <!-- ETAPA 1: e-mail -->
+      <div class="auth-etapa ativa" id="etapa-email">
+        <div class="auth-intro">
+          <h1 class="auth-titulo">Esqueceu sua senha?</h1>
+          <p class="auth-sub">Informe o e-mail da conta que deseja recuperar a senha</p>
+        </div>
+        <form class="auth-form" id="form-recuperar" novalidate>
+          <div class="clic-campo">
+            <label class="clic-campo__label" for="rec-email">E-mail</label>
+            <input class="clic-campo__input" type="email" id="rec-email" name="email" placeholder="voce@empresa.com" autocomplete="email" required>
+            <p class="clic-campo__erro" role="alert">Informe um e-mail válido.</p>
+          </div>
+          <button class="clic-btn-auth" type="submit">Redefinir senha</button>
+        </form>
+        <a class="auth-voltar" href="entrar.html">Voltar ao login</a>
+      </div>
+
+      <!-- ETAPA 2: código -->
+      <div class="auth-etapa" id="etapa-codigo">
+        <div class="auth-intro">
+          <h1 class="auth-titulo">Verifique seu e-mail</h1>
+          <p class="auth-sub">Informe o código de verificação enviado por e-mail</p>
+        </div>
+        <form class="auth-form" id="form-codigo" novalidate>
+          <div class="clic-campo">
+            <label class="clic-campo__label" for="rec-codigo">Código de verificação</label>
+            <input class="clic-campo__input" type="text" id="rec-codigo" name="codigo" placeholder="Código de 6 dígitos" inputmode="numeric" autocomplete="one-time-code" required>
+            <p class="clic-campo__erro" role="alert">Informe o código de 6 dígitos.</p>
+          </div>
+          <div class="auth-reenvio">Não recebeu o código? <a href="#" onclick="return false">Reenviar.</a></div>
+          <button class="clic-btn-auth" type="submit">Redefinir senha</button>
+        </form>
+        <a class="auth-voltar" href="entrar.html">Voltar ao login</a>
+      </div>
+
+      <!-- ETAPA 3: nova senha -->
+      <div class="auth-etapa" id="etapa-nova">
+        <div class="auth-intro">
+          <h1 class="auth-titulo">Crie sua nova senha</h1>
+          <p class="auth-sub">Digite uma senha entre 6 e 14 dígitos</p>
+        </div>
+        <form class="auth-form" id="form-nova-senha" novalidate>
+          <div class="auth-senhas">
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="nova-senha">Nova senha</label>
+              <div class="clic-senha">
+                <input class="clic-campo__input" type="password" id="nova-senha" name="senha" placeholder="••••••••••••" autocomplete="new-password" required>
+                <button class="clic-senha__olho" type="button" data-olho aria-label="Mostrar senha">
+                  <svg class="ic ic-20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <div class="clic-forca" data-forca="nova-senha" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <p class="clic-campo__erro" role="alert">Digite uma senha entre 6 e 14 dígitos.</p>
+            </div>
+            <div class="clic-campo">
+              <label class="clic-campo__label" for="nova-confirmar">Confirmar senha</label>
+              <div class="clic-senha">
+                <input class="clic-campo__input" type="password" id="nova-confirmar" name="confirmar" placeholder="••••••••••••" autocomplete="new-password" required>
+                <button class="clic-senha__olho" type="button" data-olho aria-label="Mostrar senha">
+                  <svg class="ic ic-20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <p class="clic-campo__erro" role="alert">As senhas não coincidem.</p>
+            </div>
+          </div>
+          <button class="clic-btn-auth" type="submit">Redefinir senha</button>
+        </form>
+        <a class="auth-voltar" href="entrar.html">Voltar ao login</a>
+      </div>
+    </div>
+  </main>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/auth.js" defer></script>
+</body>
+</html>

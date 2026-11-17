@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLIC — Controle financeiro, projetos, horas e reembolsos</title>
+  <meta name="description" content="Organize a gestão de finanças, projetos, horas e reembolsos em um só lugar. Conheça o CLIC.">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="page-landing">
+
+<!-- ============ HEADER ============ -->
+<header class="clic-header sticky-top">
+  <div class="container container-clic">
+    <a class="clic-header__logo" href="index.html" aria-label="CLIC — início">
+      <img src="assets/img/logo-oficial.png" alt="CLIC" width="47" height="56">
+    </a>
+    <nav class="clic-nav" aria-label="Navegação principal">
+      <a class="clic-nav__link ativo" href="index.html" aria-current="page">Home</a>
+      <a class="clic-nav__link" href="sobre.html">Sobre</a>
+      <a class="clic-nav__link" href="#ferramentas">Ferramentas</a>
+    </nav>
+    <div class="clic-header__acoes">
+      <a class="btn-clic btn-clic--branco" href="entrar.html">Login</a>
+      <a class="btn-clic btn-clic--amarelo" href="criar-conta.html">Começar</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="clic-hero">
+  <div class="container container-clic">
+    <div class="clic-hero__inner">
+      <div class="clic-hero__esq">
+        <h1 class="clic-hero__titulo">Tenha <span class="clic-hero__marca">controle</span>
+da sua vida
+financeira</h1>
+        <p class="clic-hero__desc">Organize a gestão de finanças, projetos, horas e reembolsos em um só lugar.</p>
+        <div class="clic-hero__acoes">
+          <a class="btn-clic btn-clic--amarelo btn-clic--grande" href="criar-conta.html">Começar agora</a>
+        </div>
+      </div>
+      <div class="clic-hero__dir">
+        <div class="clic-hero__composicao">
+          <div class="clic-hero__elipse" aria-hidden="true"></div>
+          <div class="clic-hero__disco">
+            <img src="assets/img/logo-oficial.png" alt="CLIC" width="100" height="120">
+          </div>
+          <div class="clic-hero__chip clic-hero__chip--projetos">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>
+            Projetos
+          </div>
+          <div class="clic-hero__chip clic-hero__chip--financeiro">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+            Financeiro
+          </div>
+          <div class="clic-hero__chip clic-hero__chip--horas">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Horas
+          </div>
+          <div class="clic-hero__chip clic-hero__chip--reembolso">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg>
+            Reembolso
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FERRAMENTAS ============ -->
+<section class="clic-section clic-ferramentas" id="ferramentas">
+  <div class="container container-clic">
+    <div class="clic-apresentacao">
+      <p class="clic-eyebrow">FERRAMENTAS</p>
+      <h2 class="clic-titulo-secao">Tudo o que você precisa, em um só lugar</h2>
+    </div>
+    <div class="clic-ferramentas__grade">
+      <article class="clic-ferramenta">
+        <div class="clic-ferramenta__icone">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+        </div>
+        <div class="clic-ferramenta__info">
+          <h3 class="clic-ferramenta__titulo">Financeiro</h3>
+          <p class="clic-ferramenta__desc">Acompanhe receitas, despesas e saldo em um só painel.</p>
+        </div>
+        <a class="clic-saiba-mais" href="#financeiro">Saiba mais
+          <svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </article>
+      <article class="clic-ferramenta">
+        <div class="clic-ferramenta__icone">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>
+        </div>
+        <div class="clic-ferramenta__info">
+          <h3 class="clic-ferramenta__titulo">Projetos</h3>
+          <p class="clic-ferramenta__desc">Organize entregas, prazos e
+custos de cada projeto.</p>
+        </div>
+        <a class="clic-saiba-mais" href="#projetos">Saiba mais
+          <svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </article>
+      <article class="clic-ferramenta">
+        <div class="clic-ferramenta__icone">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="clic-ferramenta__info">
+          <h3 class="clic-ferramenta__titulo">Horas</h3>
+          <p class="clic-ferramenta__desc">Registre e acompanhe as
+horas trabalhadas.</p>
+        </div>
+        <a class="clic-saiba-mais" href="#horas">Saiba mais
+          <svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </article>
+      <article class="clic-ferramenta">
+        <div class="clic-ferramenta__icone">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg>
+        </div>
+        <div class="clic-ferramenta__info">
+          <h3 class="clic-ferramenta__titulo">Reembolso</h3>
+          <p class="clic-ferramenta__desc">Solicite e acompanhe reembolsos sem burocracia.</p>
+        </div>
+        <a class="clic-saiba-mais" href="#reembolso">Saiba mais
+          <svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTROLE FINANCEIRO ============ -->
+<section class="clic-recurso clic-recurso--azul clic-recurso--fin" id="financeiro">
+  <div class="container container-clic">
+    <div class="clic-apresentacao reveal">
+      <p class="clic-eyebrow">CONTROLE FINANCEIRO</p>
+      <h2 class="clic-titulo-secao">Veja para onde seu dinheiro está indo</h2>
+    </div>
+    <div class="clic-recurso__conteudo">
+      <div class="clic-recurso__texto reveal">
+        <p class="clic-recurso__desc">Acompanhe receitas, despesas e saldo em um painel claro, organizado por categoria, para decidir com mais segurança.</p>
+        <ul class="clic-recurso__vantagens">
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Receitas e despesas em um só painel</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Categorias para entender seus gastos</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Visão clara do saldo do mês</span></li>
+        </ul>
+        <a class="clic-saiba-mais" href="entrar.html">Conhecer o financeiro
+          <svg class="ic ic-18" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="clic-recurso__mock reveal">
+        <div class="clic-mockup" aria-hidden="true">
+          <div class="clic-mockup__barra">
+            <span class="clic-mockup__marca">CLIC</span>
+            <div class="clic-mockup__perfil">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+              <span class="clic-mockup__sep"></span>
+              <span class="clic-mockup__nome">Marina Costa</span>
+              <span class="clic-mockup__avatar">MC</span>
+            </div>
+          </div>
+          <div class="clic-mockup__area">
+            <nav class="clic-mockup__menu">
+              <span class="clic-mockup__item ativo"><svg class="ic" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>Visão geral</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Projetos</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Horas</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>Reembolso</span>
+              <span class="clic-mockup__ajuda"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Precisa de ajuda?</span>
+            </nav>
+            <div class="clic-mockup__painel">
+              <div class="clic-mockup__topo">
+                <div>
+                  <p class="clic-mockup__titulo">Sua vida financeira, em dia.</p>
+                  <p class="clic-mockup__sub">Veja o resumo das suas finanças.</p>
+                </div>
+                <span class="clic-mockup__filtro">Este mês<svg class="ic" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+              </div>
+              <div class="clic-mockup__kpis">
+                <div class="clic-mockup__kpi">
+                  <p class="clic-mockup__kpi-rotulo">Saldo disponível</p>
+                  <p class="clic-mockup__kpi-valor">R$ 12.480,00</p>
+                  <p class="clic-mockup__kpi-nota">+12,8% neste mês</p>
+                </div>
+                <div class="clic-mockup__kpi">
+                  <p class="clic-mockup__kpi-rotulo">Receitas</p>
+                  <p class="clic-mockup__kpi-valor">R$ 8.200,00</p>
+                  <p class="clic-mockup__kpi-nota verde"><svg class="ic" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>+8,4% neste mês</p>
+                </div>
+                <div class="clic-mockup__kpi">
+                  <p class="clic-mockup__kpi-rotulo">Despesas</p>
+                  <p class="clic-mockup__kpi-valor">R$ 3.760,00</p>
+                  <p class="clic-mockup__kpi-nota vermelho"><svg class="ic" viewBox="0 0 24 24"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>−4,2% neste mês</p>
+                </div>
+              </div>
+              <div class="clic-mockup__card">
+                <div class="clic-mockup__card-topo">
+                  <span class="clic-mockup__card-titulo">Fluxo de caixa</span>
+                  <span class="clic-mockup__legenda"><i></i>Saldo acumulado</span>
+                </div>
+                <div id="mock-linha"></div>
+                <div class="clic-mockup__datas"><span>01 set</span><span>05 set</span><span>10 set</span><span>15 set</span><span>20 set</span><span>25 set</span><span>30 set</span></div>
+              </div>
+              <div>
+                <p class="clic-mockup__card-titulo" style="margin-bottom:12px">Categorias</p>
+                <div class="clic-mockup__categorias">
+                  <div>
+                    <div class="clic-mockup__cat-topo"><span>Salário</span><b>R$ 4.200,00</b></div>
+                    <div class="clic-mockup__barra-prog"><i style="width:71%"></i></div>
+                  </div>
+                  <div>
+                    <div class="clic-mockup__cat-topo"><span>Serviços</span><b>R$ 1.840,00</b></div>
+                    <div class="clic-mockup__barra-prog"><i style="width:50%"></i></div>
+                  </div>
+                  <div>
+                    <div class="clic-mockup__cat-topo"><span>Alimentação</span><b>R$ 1.120,00</b></div>
+                    <div class="clic-mockup__barra-prog"><i style="width:39%"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJETOS ============ -->
+<section class="clic-recurso clic-recurso--amarelo clic-recurso--proj" id="projetos">
+  <div class="container container-clic">
+    <div class="clic-apresentacao reveal">
+      <p class="clic-eyebrow">PROJETOS</p>
+      <h2 class="clic-titulo-secao">Cada projeto no prazo e dentro do orçamento</h2>
+    </div>
+    <div class="clic-recurso__conteudo">
+      <div class="clic-recurso__mock reveal">
+        <div class="clic-mockup" aria-hidden="true">
+          <div class="clic-mockup__barra">
+            <span class="clic-mockup__marca">CLIC</span>
+            <div class="clic-mockup__perfil">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+              <span class="clic-mockup__sep"></span>
+              <span class="clic-mockup__nome">Marina Costa</span>
+              <span class="clic-mockup__avatar">MC</span>
+            </div>
+          </div>
+          <div class="clic-mockup__area">
+            <nav class="clic-mockup__menu">
+              <span class="clic-mockup__item ativo"><svg class="ic" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>Visão geral</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Projetos</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Horas</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>Reembolso</span>
+              <span class="clic-mockup__ajuda"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Precisa de ajuda?</span>
+            </nav>
+            <div class="clic-mockup__painel">
+              <div class="clic-mockup__topo">
+                <div>
+                  <p class="clic-mockup__titulo">Seus projetos, em ordem.</p>
+                  <p class="clic-mockup__sub">Acompanhe andamento, prazos e custos.</p>
+                </div>
+                <span class="clic-mockup__filtro">Este mês<svg class="ic" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+              </div>
+              <div class="clic-mockup__lista">
+                <div class="clic-mockup__projeto">
+                  <div class="clic-mockup__projeto-topo">
+                    <div><span class="clic-mockup__projeto-nome">Site institucional</span><span class="clic-mockup__status">Em andamento</span></div>
+                    <span class="clic-mockup__data">12 set 2025</span>
+                  </div>
+                  <div class="clic-mockup__barra-prog"><i style="width:72%"></i></div>
+                  <p class="clic-mockup__pct">72% concluído</p>
+                </div>
+                <div class="clic-mockup__projeto">
+                  <div class="clic-mockup__projeto-topo">
+                    <div><span class="clic-mockup__projeto-nome">App mobile</span><span class="clic-mockup__status">Em andamento</span></div>
+                    <span class="clic-mockup__data">18 set 2025</span>
+                  </div>
+                  <div class="clic-mockup__barra-prog"><i style="width:35%"></i></div>
+                  <p class="clic-mockup__pct">35% concluído</p>
+                </div>
+                <div class="clic-mockup__projeto">
+                  <div class="clic-mockup__projeto-topo">
+                    <div><span class="clic-mockup__projeto-nome">Campanha de vendas</span><span class="clic-mockup__status clic-mockup__status--concluido">Concluído</span></div>
+                    <span class="clic-mockup__data">05 set 2025</span>
+                  </div>
+                  <div class="clic-mockup__barra-prog"><i style="width:100%"></i></div>
+                  <p class="clic-mockup__pct">100% concluído</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clic-recurso__texto reveal">
+        <p class="clic-recurso__desc">Reúna entregas, prazos e custos de cada projeto e acompanhe o andamento sem perder nada de vista.</p>
+        <ul class="clic-recurso__vantagens">
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Progresso de cada projeto</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Prazos e entregas organizados</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Custos ligados ao projeto</span></li>
+        </ul>
+        <a class="clic-saiba-mais" href="entrar.html">Conhecer projetos
+          <svg class="ic ic-18" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HORAS ============ -->
+<section class="clic-recurso clic-recurso--azul clic-recurso--horas" id="horas">
+  <div class="container container-clic">
+    <div class="clic-apresentacao reveal">
+      <p class="clic-eyebrow">HORAS</p>
+      <h2 class="clic-titulo-secao">Saiba quanto tempo cada tarefa realmente leva</h2>
+    </div>
+    <div class="clic-recurso__conteudo">
+      <div class="clic-recurso__texto reveal">
+        <p class="clic-recurso__desc">Registre suas horas por projeto e veja o resumo da semana para planejar melhor seu tempo.</p>
+        <ul class="clic-recurso__vantagens">
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Registro rápido de horas</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Resumo semanal por projeto</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Horas conectadas ao financeiro</span></li>
+        </ul>
+        <a class="clic-saiba-mais" href="entrar.html">Conhecer horas
+          <svg class="ic ic-18" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="clic-recurso__mock reveal">
+        <div class="clic-mockup" aria-hidden="true">
+          <div class="clic-mockup__barra">
+            <span class="clic-mockup__marca">CLIC</span>
+            <div class="clic-mockup__perfil">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+              <span class="clic-mockup__sep"></span>
+              <span class="clic-mockup__nome">Marina Costa</span>
+              <span class="clic-mockup__avatar">MC</span>
+            </div>
+          </div>
+          <div class="clic-mockup__area">
+            <nav class="clic-mockup__menu">
+              <span class="clic-mockup__item ativo"><svg class="ic" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>Visão geral</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Projetos</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Horas</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>Reembolso</span>
+              <span class="clic-mockup__ajuda"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Precisa de ajuda?</span>
+            </nav>
+            <div class="clic-mockup__painel">
+              <div class="clic-mockup__topo">
+                <div>
+                  <p class="clic-mockup__titulo">Horas da semana</p>
+                  <p class="clic-mockup__sub">Resumo do período atual.</p>
+                </div>
+                <span class="clic-mockup__filtro">Esta semana<svg class="ic" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+              </div>
+              <div class="clic-mockup__resumo-linha">
+                <span class="clic-mockup__resumo-rotulo">Total da semana</span>
+                <span class="clic-mockup__resumo-valor">32h 40min</span>
+              </div>
+              <div class="clic-mockup__card">
+                <div class="clic-mockup__card-topo">
+                  <span class="clic-mockup__card-titulo">Horas por dia</span>
+                  <span class="clic-mockup__legenda"><i style="background:#0C3C67"></i>Horas registradas</span>
+                </div>
+                <div id="mock-semana"></div>
+                <div class="clic-mockup__datas" style="padding-left:0"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+              </div>
+              <div class="clic-mockup__card" style="margin-bottom:0">
+                <div class="clic-mockup__card-topo" style="margin-bottom:8px">
+                  <span class="clic-mockup__card-titulo">Em andamento</span>
+                  <span class="clic-mockup__data">01:24:18</span>
+                </div>
+                <p class="clic-mockup__data">Site institucional</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REEMBOLSO ============ -->
+<section class="clic-recurso clic-recurso--amarelo clic-recurso--reemb" id="reembolso">
+  <div class="container container-clic">
+    <div class="clic-apresentacao reveal">
+      <p class="clic-eyebrow">REEMBOLSO</p>
+      <h2 class="clic-titulo-secao">Peça reembolsos em poucos cliques</h2>
+    </div>
+    <div class="clic-recurso__conteudo">
+      <div class="clic-recurso__mock reveal">
+        <div class="clic-mockup" aria-hidden="true">
+          <div class="clic-mockup__barra">
+            <span class="clic-mockup__marca">CLIC</span>
+            <div class="clic-mockup__perfil">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+              <span class="clic-mockup__sep"></span>
+              <span class="clic-mockup__nome">Marina Costa</span>
+              <span class="clic-mockup__avatar">MC</span>
+            </div>
+          </div>
+          <div class="clic-mockup__area">
+            <nav class="clic-mockup__menu">
+              <span class="clic-mockup__item ativo"><svg class="ic" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>Visão geral</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Projetos</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Horas</span>
+              <span class="clic-mockup__item"><svg class="ic" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>Reembolso</span>
+              <span class="clic-mockup__ajuda"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Precisa de ajuda?</span>
+            </nav>
+            <div class="clic-mockup__painel">
+              <div class="clic-mockup__topo">
+                <div>
+                  <p class="clic-mockup__titulo">Reembolsos em andamento</p>
+                  <p class="clic-mockup__sub">Acompanhe cada etapa do pedido.</p>
+                </div>
+                <span class="clic-mockup__filtro">Este mês<svg class="ic" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+              </div>
+              <div class="clic-mockup__reembolso">
+                <div class="clic-mockup__reembolso-topo">
+                  <div class="clic-mockup__reembolso-id">Reembolso #0231<span class="clic-mockup__status">Em análise</span></div>
+                  <span class="clic-mockup__data">18 set 2025</span>
+                </div>
+                <div class="clic-mockup__comprovante">
+                  <span class="clic-mockup__thumb"><svg class="ic" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg></span>
+                  <div>
+                    <p class="clic-mockup__comprovante-rotulo">Comprovante anexado</p>
+                    <p class="clic-mockup__comprovante-valor">R$ 184,50</p>
+                    <p class="clic-mockup__comprovante-data">Refeição e combustível</p>
+                  </div>
+                </div>
+              </div>
+              <div class="clic-mockup__card" style="margin-bottom:0">
+                <p class="clic-mockup__card-titulo" style="margin-bottom:12px">Etapas do reembolso</p>
+                <div class="clic-mockup__etapas">
+                  <div class="clic-mockup__etapa"><span class="clic-mockup__etapa-icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="clic-mockup__etapa-titulo">Solicitado</p><p class="clic-mockup__etapa-sub">18 set 2025</p></div></div>
+                  <div class="clic-mockup__etapa"><span class="clic-mockup__etapa-icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="clic-mockup__etapa-titulo">Em análise</p><p class="clic-mockup__etapa-sub">19 set 2025</p></div></div>
+                  <div class="clic-mockup__etapa"><span class="clic-mockup__etapa-icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="clic-mockup__etapa-titulo">Aprovado</p><p class="clic-mockup__etapa-sub">Aguardando</p></div></div>
+                  <div class="clic-mockup__etapa"><span class="clic-mockup__etapa-icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="clic-mockup__etapa-titulo">Pago</p><p class="clic-mockup__etapa-sub">Aguardando</p></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clic-recurso__texto reveal">
+        <p class="clic-recurso__desc">Solicite reembolsos, anexe comprovantes e acompanhe cada etapa do pedido sem burocracia.</p>
+        <ul class="clic-recurso__vantagens">
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Solicitação em poucos cliques</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Comprovantes anexados ao pedido</span></li>
+          <li class="clic-recurso__item"><span class="clic-recurso__check"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>Acompanhamento de cada etapa</span></li>
+        </ul>
+        <a class="clic-saiba-mais" href="entrar.html">Conhecer reembolsos
+          <svg class="ic ic-18" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFÍCIOS ============ -->
+<section class="clic-section clic-beneficios">
+  <div class="container container-clic">
+    <div class="clic-apresentacao reveal">
+      <p class="clic-eyebrow">BENEFÍCIOS</p>
+      <h2 class="clic-titulo-secao">Por que usar o CLIC</h2>
+    </div>
+    <div class="clic-beneficios__grade">
+      <article class="clic-beneficio reveal">
+        <div class="clic-beneficio__icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="clic-beneficio__info">
+          <h3 class="clic-beneficio__titulo">Simples de usar</h3>
+          <p class="clic-beneficio__desc">Interface clara e intuitiva para começar sem complicação. Registre suas informações, encontre o que precisa e acompanhe a rotina financeira com mais praticidade.</p>
+        </div>
+      </article>
+      <article class="clic-beneficio reveal">
+        <div class="clic-beneficio__icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="clic-beneficio__info">
+          <h3 class="clic-beneficio__titulo">Tudo em um só lugar</h3>
+          <p class="clic-beneficio__desc">Finanças, projetos, horas e reembolsos conectados em uma única plataforma. Centralize as informações da sua equipe e acompanhe cada etapa sem alternar entre ferramentas.</p>
+        </div>
+      </article>
+      <article class="clic-beneficio reveal">
+        <div class="clic-beneficio__icone"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="clic-beneficio__info">
+          <h3 class="clic-beneficio__titulo">Organização financeira clara</h3>
+          <p class="clic-beneficio__desc">Acompanhe receitas, despesas e resultados a qualquer momento. Visualize seus números com clareza para entender para onde vai o dinheiro e tomar decisões mais informadas.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="clic-cta">
+  <span class="clic-cta__elipse clic-cta__elipse--a" aria-hidden="true"></span>
+  <span class="clic-cta__elipse clic-cta__elipse--b" aria-hidden="true"></span>
+  <div class="container container-clic">
+    <h2 class="clic-cta__titulo">Comece a organizar suas finanças</h2>
+    <a class="btn-clic btn-clic--amarelo btn-clic--cta" href="criar-conta.html">Começar</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="clic-footer">
+  <div class="container container-clic">
+    <div class="clic-footer__topo">
+      <div class="clic-footer__marca">
+        <img src="assets/img/logo-oficial.png" alt="CLIC" width="47" height="56">
+        <p>Controle financeiro, projetos, horas e reembolsos em um só lugar.</p>
+      </div>
+      <div class="clic-footer__col clic-footer__links">
+        <h3>Links</h3>
+        <a href="index.html">Home</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="#ferramentas">Ferramentas</a>
+        <a href="entrar.html">Login</a>
+      </div>
+      <div class="clic-footer__col clic-footer__redes">
+        <h3>Redes sociais</h3>
+        <div class="clic-footer__icones">
+          <a href="#" aria-label="Instagram"><svg class="ic ic-18" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg class="ic ic-18" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ic ic-18" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+          <a href="#" aria-label="X"><svg class="ic ic-18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/></svg></a>
+        </div>
+      </div>
+      <div class="clic-footer__col clic-footer__contato">
+        <h3>Contato</h3>
+        <a href="tel:00000000000">(00) 00000-0000</a>
+        <a href="mailto:contato@clic.com.br">contato@clic.com.br</a>
+      </div>
+    </div>
+    <div class="clic-footer__divisor"></div>
+    <p class="clic-footer__copy">© <span data-ano>2026</span> CLIC. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/reveal.js" defer></script>
+<script src="js/charts.js" defer></script>
+</body>
+</html>

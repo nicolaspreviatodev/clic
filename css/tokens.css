@@ -1,0 +1,100 @@
+/* =====================================================
+   CLIC — tokens.css
+   Variáveis oficiais extraídas do Figma (tokens.json)
+   + sobrescritas do Bootstrap 5.3.3
+   ===================================================== */
+
+:root{
+  /* Cores oficiais (Figma: CLIC / Base) */
+  --clic-navy:#0C3C67;
+  --clic-amarelo:#FFB703;
+  --clic-azul-aco:#4F76A0;
+  --clic-branco:#FFFFFF;
+  --clic-azul-claro:#EAF1F9;
+  --clic-amarelo-claro:#FFF6DC;
+  --clic-fundo-suave:#F4F7FA;
+  --clic-borda:#E2E8F0;
+  --clic-texto:#44546A;
+  --clic-sucesso:#2E9E6B;
+  --clic-erro:#D64545;
+
+  /* Cores de app/autenticação (extraídas das telas) */
+  --clic-fundo-app:#F5F5F5;
+  --clic-texto-app:#395054;
+  --clic-placeholder:#87939E;
+  --clic-texto-sec:#647481;
+  --clic-borda-input:#D5DBE2;
+  --clic-abas:#E6E9ED;
+  --clic-amarelo-hover:#F0AA00;
+  --clic-menu-hover:#FEC947;
+  --clic-erro-input:#B3261E;
+  --clic-zebra:#FBFBFB;
+  --clic-badge-azul:#DCE7F2;
+  --clic-badge-amarelo:#FFF0C2;
+  --clic-ambar-texto:#8A5A00;
+  --clic-azul-mockup:#EAF1F8;
+  --clic-footer-borda:#D5E1EE;
+  --clic-grade-linha:#E3EAF3;
+  --clic-vermelho-landing:#D14343;
+
+  /* Paleta da página Sobre (divergente no Figma) */
+  --sobre-navy:#113E63;
+  --sobre-amarelo:#FFBE00;
+  --sobre-texto:#5B6C7D;
+  --sobre-hero:#FFF7DE;
+  --sobre-azul:#E5EFF9;
+  --sobre-card-borda:#DCE5EE;
+
+  /* Raios */
+  --clic-r-card:12px;
+  --clic-r-botao:8px;
+  --clic-r-input:10px;
+  --clic-r-aba:8px;
+  --clic-r-checkbox:6px;
+
+  /* Sombras / foco */
+  --clic-sombra:0 8px 24px rgba(12,60,103,.08);
+  --clic-foco:0 0 0 3px rgba(12,60,103,.15);
+
+  /* Layout */
+  --clic-largura-max:1200px;
+  --clic-pad-secao:112px;
+
+  /* Fontes */
+  --clic-font-inter:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --clic-font-jakarta:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+
+  /* ===== Sobrescritas do Bootstrap 5.3 ===== */
+  --bs-body-font-family:var(--clic-font-inter);
+  --bs-body-color:#44546A;
+  --bs-body-bg:#FFFFFF;
+  --bs-body-line-height:normal;
+  --bs-body-font-size:16px;
+  --bs-primary:#0C3C67;
+  --bs-primary-rgb:12,60,103;
+  --bs-warning:#FFB703;
+  --bs-warning-rgb:255,183,3;
+  --bs-success:#2E9E6B;
+  --bs-success-rgb:46,158,107;
+  --bs-danger:#D64545;
+  --bs-danger-rgb:214,69,69;
+  --bs-border-color:#E2E8F0;
+  --bs-border-radius:8px;
+  --bs-border-radius-lg:12px;
+  --bs-link-color:#0C3C67;
+  --bs-link-color-rgb:12,60,103;
+  --bs-link-hover-color:#0C3C67;
+  --bs-link-hover-color-rgb:12,60,103;
+  --bs-focus-ring-color:rgba(12,60,103,.15);
+  --bs-focus-ring-width:3px;
+}
+
+/* Escopo da página Sobre: paleta própria do Figma */
+body.page-sobre{
+  --clic-navy:var(--sobre-navy);
+  --clic-amarelo:var(--sobre-amarelo);
+  --clic-texto:var(--sobre-texto);
+  --clic-azul-claro:var(--sobre-azul);
+  --clic-amarelo-claro:var(--sobre-hero);
+  --clic-borda:var(--sobre-card-borda);
+}

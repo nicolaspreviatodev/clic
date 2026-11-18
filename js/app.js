@@ -11,7 +11,7 @@
   var mapa = {
     'dashboard-financeiro.html': 'Dashboard',
     'dashboard-horas.html': 'Dashboard',
-    'dashboard-reembolso.html': 'Dashboard',
+    'dashboard-reembolso.html': 'Reembolso',
     'financeiro.html': 'Financeiro',
     'projetos.html': 'Projetos',
     'horas.html': 'Horas',
@@ -21,6 +21,11 @@
     'em-construcao.html': null
   };
   var alvo = mapa[pagina];
+  // Tela em construção: destaca o módulo pedido (?secao=reembolso|projetos)
+  if (pagina === 'em-construcao.html') {
+    var secao = new URLSearchParams(location.search).get('secao');
+    alvo = { reembolso: 'Reembolso', projetos: 'Dashboard' }[secao] || null;
+  }
   if (alvo) {
     document.querySelectorAll('.clic-menu-btn').forEach(function (b) {
       if (b.textContent.trim() === alvo) {

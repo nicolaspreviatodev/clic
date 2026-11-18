@@ -103,7 +103,45 @@
     }, 1000);
   }
 
+  // Telas estreitas: reduz o mockup inteiro (600px) para caber sem cortar nem rolar
+  function escalarMockups() {
+    var molduras = document.querySelectorAll('.clic-recurso__mock');
+    var ajustar = function () {
+      molduras.forEach(function (moldura) {
+        var mock = moldura.querySelector('.clic-mockup');
+        if (!mock) return;
+        mock.style.transform = '';
+        moldura.style.height = '';
+        var disponivel = moldura.clientWidth;
+        if (disponivel > 0 && disponivel < 600) {
+          var escala = disponivel / 600;
+          mock.style.transform = 'scale(' + escala + ')';
+          moldura.style.height = Math.ceil(mock.offsetHeight * escala) + 'px';
+        }
+      });
+    };
+    ajustar();
+    var pendente = null;
+    window.addEventListener('resize', function () {
+      if (pendente) cancelAnimationFrame(pendente);
+      pendente = requestAnimationFrame(ajustar);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustar);
+    // O conteúdo animado muda de altura: reajusta a moldura junto
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(function () {
+        if (pendente) cancelAnimationFrame(pendente);
+        pendente = requestAnimationFrame(ajustar);
+      });
+      molduras.forEach(function (m) {
+        var mock = m.querySelector('.clic-mockup');
+        if (mock) ro.observe(mock);
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    escalarMockups();
     projetos();
     financeiro();
     reembolso();

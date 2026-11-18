@@ -110,9 +110,12 @@ const novoCtx = async (sessao = SESSAO) => {
   await page.fill('#reg-fim', '10:00');
   await page.fill('#reg-descricao', 'Teste manual');
   await page.click('#form-registro button[type="submit"]');
-  await page.waitForTimeout(500);
-  const final = await page.locator('#tabela-horas tbody tr').count();
-  ok(final === depois + 1, 'registro manual inserido (' + depois + ' → ' + final + ')');
+  await page.waitForTimeout(600);
+  // Com paginação (D7) a tabela mostra no máximo 10 linhas, então o que
+  // comprova a inclusão é o total na base, não a contagem de linhas visíveis.
+  const baseFinal = await totalBase();
+  ok(baseFinal === baseDepois + 1,
+    'registro manual inserido na base (' + baseDepois + ' → ' + baseFinal + ')');
 
   await ctx.close();
 }

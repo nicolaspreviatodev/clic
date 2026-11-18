@@ -563,3 +563,40 @@ button.clic-badge:hover{filter:brightness(.96)}
 .clic-btn-icone--48{width:48px;height:48px;align-self:flex-end}
 .construcao__texto{font:400 16px/26px var(--clic-font-inter);color:var(--clic-texto-app)}
 .construcao__acao{margin-top:24px}
+
+/* ---------- Paginação de tabelas (D7) ---------- */
+.clic-paginacao{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  flex-wrap:wrap;margin-top:16px;
+}
+.clic-pagination{margin:0;display:flex;gap:4px;flex-wrap:wrap}
+.clic-pagination .page-link{
+  min-width:34px;height:34px;padding:0 8px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--clic-borda);border-radius:8px;
+  font:600 13px/1 var(--clic-font-inter);color:var(--clic-navy);
+  background:#fff;cursor:pointer;transition:background-color .18s ease,color .18s ease,border-color .18s ease;
+}
+.clic-pagination .page-link:hover:not(:disabled){background:var(--clic-azul-claro);border-color:var(--clic-azul-aco)}
+.clic-pagination .page-item.active .page-link{background:var(--clic-navy);border-color:var(--clic-navy);color:#F5F5F5}
+.clic-pagination .page-item.disabled .page-link{opacity:.45;cursor:not-allowed}
+.clic-pagination .page-link:focus-visible{box-shadow:var(--clic-foco)}
+.clic-paginacao__resumo{font:400 13px/16px var(--clic-font-inter);color:#647481}
+
+/* ---------- "Limpar filtros" junto aos filtros ---------- */
+.clic-limpar-filtros{
+  display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;
+  border:1px solid var(--clic-borda);border-radius:8px;background:#fff;
+  font:600 13px/16px var(--clic-font-inter);color:var(--clic-navy);
+  transition:background-color .18s ease,border-color .18s ease;
+}
+.clic-limpar-filtros:hover{background:var(--clic-azul-claro);border-color:var(--clic-azul-aco)}
+.clic-limpar-filtros .ic{color:var(--clic-azul-aco)}
+.app-filtros--ativo .clic-limpar-filtros{order:99}
+
+/* ---------- Estado vazio: ação ---------- */
+.linha-vazia__limpar{
+  font:600 14px/17px var(--clic-font-inter);color:var(--clic-navy);
+  text-decoration:underline;background:none;border:none;cursor:pointer;
+}
+.linha-vazia__limpar:hover{color:var(--clic-azul-aco)}

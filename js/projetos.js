@@ -45,16 +45,8 @@
 
   function render() {
     var lista = listar();
-    var corpo = tabela.tBodies[0];
 
-    if (!lista.length) {
-      corpo.innerHTML = '<tr class="linha-vazia"><td colspan="8">' +
-        '<svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>' +
-        '<path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/></svg>Nenhum resultado encontrado.</td></tr>';
-      return;
-    }
-
-    corpo.innerHTML = lista.map(function (p) {
+    var linhas = lista.map(function (p) {
       var h = horasDoProjeto(p.cc) || HORAS_FIGMA[p.cc] || 0;
       return '<tr>' +
         '<td>' + p.cc + '</td>' +
@@ -66,16 +58,64 @@
         '<td>' + (p.fim ? fmt.dataLonga(p.fim) : '-') + '</td>' +
         '<td>' + fmt.horas(h) + '</td>' +
         '</tr>';
-    }).join('');
+    });
+
+    var temFiltro = !!((fCC && fCC.value.trim()) || (fNome && fNome.value.trim()) ||
+      (fResp && fResp.value.trim()) || (fSituacao && fSituacao.value.trim()));
+
+    global.CLIC.tabela.barraLimpar('filtros-projetos', temFiltro, limparFiltros);
+    global.CLIC.tabela.paginar({
+      id: 'tabela-projetos', linhas: linhas, colspan: 8, comLimpar: temFiltro, rerender: render
+    });
   }
 
-  if (btnFiltrar) btnFiltrar.addEventListener('click', render);
+  function limparFiltros(campo) {
+    var soCampo = campo && typeof campo.value === 'string';
+    if (soCampo) {
+      campo.value = '';
+    } else {
+      [fCC, fNome, fResp, fSituacao].forEach(function (c) { if (c) c.value = ''; });
+    }
+    salvarFiltros();
+    global.CLIC.tabela.reiniciarPagina('tabela-projetos');
+    render();
+  }
+
+  function restaurarFiltros() {
+    var f = global.CLIC.tabela.salvos('projetos');
+    if (fCC && f.cc) fCC.value = f.cc;
+    if (fNome && f.nome) fNome.value = f.nome;
+    if (fResp && f.responsavel) fResp.value = f.responsavel;
+    if (fSituacao && f.situacao) fSituacao.value = f.situacao;
+  }
+
+  function salvarFiltros() {
+    global.CLIC.tabela.salvar('projetos', {
+      cc: fCC ? fCC.value : '',
+      nome: fNome ? fNome.value : '',
+      responsavel: fResp ? fResp.value : '',
+      situacao: fSituacao ? fSituacao.value : ''
+    });
+  }
+
+  function aplicar() {
+    global.CLIC.tabela.reiniciarPagina('tabela-projetos');
+    render();
+    salvarFiltros();
+  }
+
+  if (btnFiltrar) btnFiltrar.addEventListener('click', aplicar);
   [fCC, fNome, fResp, fSituacao].forEach(function (campo) {
     if (!campo) return;
-    campo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); render(); } });
-    campo.addEventListener('change', render);
+    campo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); aplicar(); } });
+    campo.addEventListener('change', aplicar);
   });
 
+  // D7: "/" foca o primeiro filtro; "Esc" limpa
+  global.CLIC.tabela.atalhos({ principal: fCC, aoEsc: limparFiltros });
+
+  restaurarFiltros();
+  global.CLIC.tabela.ligarLimparVazio('tabela-projetos', limparFiltros);
   render();
   global.CLIC.projetos = { render: render };
 })(window);

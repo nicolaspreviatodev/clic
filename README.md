@@ -37,12 +37,12 @@ As telas internas são protegidas: sem sessão, voltam para `entrar.html`.
 
 | Página | Origem no Figma | Interatividade |
 |---|---|---|
-| `index.html` | LandingPage (1440x6353) | header sticky, reveal on scroll, gráficos SVG, âncoras com offset, chips do hero, voltar ao topo |
+| `index.html` | LandingPage (1440x6353) | header sticky, reveal on scroll, gráficos SVG, âncoras com offset, chips do hero, voltar ao topo, mockups animados (D6) |
 | `sobre.html` | Sobre — Desktop (1440x2920) | header/footer da landing, voltar ao topo |
 | `entrar.html` | Entrar Desktop + variante "Senha redefinida" (`?redefinida=1`) | validação, olho, carregando, cria sessão e redireciona por perfil |
 | `criar-conta.html` | Criar conta Desktop | validação, força de senha, aceite de termos, cria sessão como Gestor |
 | `esqueci-senha.html` | Esqueci senha (4 estados) | fluxo e-mail → código → nova senha; distingue e-mail malformado de não cadastrado |
-| `financeiro.html` | ModuloFinanceiro 06a | KPIs calculados, filtros por período/projeto/tipo, ordenação por coluna, alternar "Pago", modal de novo lançamento |
+| `financeiro.html` | ModuloFinanceiro 06a | KPIs calculados, filtros por período/projeto/tipo, ordenação por coluna, alternar "Pago", modal de novo lançamento, paginação |
 | `horas.html` | ModuloHoras 07a/b/c | cronômetro persistente (sobrevive a recarregar), registro manual validado, filtros, total do período |
 | `horas-funcionario.html` | ModuloHorasFuncionario 07d | só os lançamentos do próprio usuário, menu restrito |
 | `projetos.html` | ModuloProjeto 08 | filtros com rótulo + campo, Enter para filtrar, horas vindas dos lançamentos |
@@ -74,6 +74,7 @@ js/app.js             menu ativo, sidebar mobile, sair, matriz de permissões
 js/main.js            header, tooltips, âncoras, ano
 js/reveal.js          IntersectionObserver
 js/auth.js            validação, força, olho, fluxo esqueci-senha
+js/mockups.js         microanimações dos mockups da landing (D6)
 js/financeiro.js      filtros, ordenação, alternar pago, modal de lançamento
 js/horas.js           tabela de horas, filtros, totais, escopo do funcionário
 js/timer.js           cronômetro persistente + registro manual
@@ -82,6 +83,7 @@ js/usuarios.js        busca, filtros, criação e exclusão
 js/usuario-editar.js  carregamento por id e permissões por perfil
 js/charts.js          SVG: rosquinha, barras, linha, tooltip, animação
 js/dashboards.js      recalcula KPIs e gráficos a partir da base
+js/tabela.js          paginação (10 linhas), filtros lembrados, atalhos e estado vazio
 
 assets/img/           logo oficial (+ variante recolorida para fundo navy)
 assets/vendor/        Bootstrap 5.3.3 embutido
@@ -101,6 +103,7 @@ node tools/audit-layout.mjs      # scroll horizontal de 320 a 1920px, imagens qu
 node tools/medidas.mjs           # alturas das seções da landing contra o Figma (tolerância 2px)
 node tools/smoke.mjs             # sessão, redirecionamentos, tabelas e KPIs por página
 node tools/interacoes.mjs        # modal, ordenação, cronômetro, perfil, sair
+node tools/d6d7.mjs              # mockups vivos, atalhos / e Esc, filtros lembrados, paginação
 node tools/compare.mjs           # capturas de todas as páginas em 1440px
 ```
 
@@ -126,3 +129,7 @@ Estado atual: **todos em verde**. O detalhe das ocorrências encontradas e corri
    deixaria a tabela sempre vazia.
 8. **Número "01" da página Sobre** (#FFBE00 sobre branco, contraste 1,66) foi mantido para
    não alterar a identidade desenhada no Figma.
+9. **Filtros lembrados** ficam em `localStorage['clic.filtros.v1']`, por página, e não vão
+   para a URL: recarregar mantém o filtro, compartilhar o link não o leva junto.
+10. **Paginação** mostra 10 linhas por página em todas as tabelas de dados; os KPIs e os
+    totais continuam calculados sobre o resultado completo, não só sobre a página visível.

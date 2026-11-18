@@ -80,3 +80,22 @@ percentual de diferença — a conferência de fidelidade foi feita por medidas 
   alternar "Pago", filtro por tipo, cronômetro (contar e gravar), registro manual, busca de usuários,
   exclusão com modal, carregamento por `?id=`, sugestão de permissões por perfil, salvar, e o ciclo
   completo de sair e reentrar.
+
+## Fase D6/D7 — segunda rodada
+
+| ID | Página | Problema | Arquivo | Correção | Status |
+|----|--------|----------|---------|----------|--------|
+| D6-01 | landing | relógio do mockup de Horas parado em 01:24:18 | `js/mockups.js` | conta em tempo real a partir de 01:24:18, só com o mockup na tela | Feito |
+| D6-02 | landing | etapas de Reembolso sem a sequência prevista | `js/mockups.js` | preenchem em sequência (150 ms) até "Em análise" | Feito |
+| D6-03 | landing | barras de Projetos não cresciam | `js/mockups.js` | crescem até 72% / 35% / 100% ao entrar na tela | Feito |
+| D6-04 | landing | barras de categoria do Financeiro não animavam | `js/mockups.js` | crescem em sequência, terminando no valor do Figma | Feito |
+| D7-01 | usuários | opções de Perfil/Status sem `value` faziam o filtro retornar vazio | `js/usuarios.js` | `value` explícito em cada opção | Corrigido |
+| D7-02 | tabelas | sem paginação acima de 10 linhas | `js/tabela.js` | 10 linhas por página, navegação e resumo "X–Y de N" | Feito |
+| D7-03 | tabelas | filtro ativo sem forma de limpar | `js/tabela.js` | botão "Limpar filtros" que só aparece com filtro ativo | Feito |
+| D7-04 | tabelas | estado vazio sem ação | `js/tabela.js` | mensagem pedida + link "Limpar filtros" na linha vazia | Feito |
+| D7-05 | 4 telas | filtros se perdiam ao navegar | `js/tabela.js` | `localStorage['clic.filtros.v1']` por página | Feito |
+| D7-06 | 4 telas | sem atalhos de teclado | `js/tabela.js` | `/` foca o filtro principal, `Esc` limpa o focado ou todos | Feito |
+| D7-07 | financeiro | filtro de período não tinha opção "Todos" | `js/financeiro.js` | opção adicionada no topo da lista | Corrigido |
+| D7-08 | internas | falha na substituição deixou `horas.js` sintaticamente quebrado | `js/horas.js` | arquivo reescrito e validado com `node --check` | Corrigido |
+
+Cobertura nova: `tools/d6d7.mjs` — 22 verificações, todas em verde.

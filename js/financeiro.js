@@ -35,7 +35,7 @@
       var periodos = {};
       d.lancamentosFinanceiros.forEach(function (l) { periodos[mesAno(l.data)] = true; });
       var chaves = Object.keys(periodos).sort();
-      filtroPeriodo.innerHTML = chaves.map(function (k) {
+      filtroPeriodo.innerHTML = '<option value="">Período: Todos</option>' + chaves.map(function (k) {
         return '<option value="' + k + '">Período: ' + rotuloPeriodo(k + '-01') + '</option>';
       }).join('');
       // out/2026 é o período do Figma
@@ -103,14 +103,7 @@
   }
 
   function pintarTabela(lista) {
-    if (!lista.length) {
-      tbody.innerHTML = '<tr class="linha-vazia"><td colspan="10">' +
-        '<svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/>' +
-        '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>' +
-        'Nenhum resultado encontrado.</td></tr>';
-      return;
-    }
-    tbody.innerHTML = lista.map(function (l) {
+    var linhas = lista.map(function (l) {
       return '<tr>' +
         '<td>' + fmt.dataCurta(l.data) + '</td>' +
         '<td>' + l.descricao + '</td>' +
@@ -123,7 +116,39 @@
         '<td class="num">' + fmt.moeda(l.valor) + '</td>' +
         celulaPago(l) +
         '</tr>';
-    }).join('');
+    });
+    var temFiltro = !!((filtroPeriodo && filtroPeriodo.value) ||
+      (filtroProjeto && filtroProjeto.value) || (filtroTipo && filtroTipo.value));
+    global.CLIC.tabela.barraLimpar('filtros-financeiro', temFiltro, limparFiltros);
+    global.CLIC.tabela.paginar({
+      id: 'tabela-financeiro', linhas: linhas, colspan: 10, comLimpar: temFiltro, rerender: render
+    });
+  }
+
+  function limparFiltros(campo) {
+    // O clique do botão chega como evento; só um campo de filtro tem .value string
+    var soCampo = campo && typeof campo.value === 'string';
+    if (soCampo) {
+      campo.value = '';
+    } else {
+      if (filtroPeriodo) filtroPeriodo.value = '';
+      if (filtroProjeto) filtroProjeto.value = '';
+      if (filtroTipo) filtroTipo.value = '';
+    }
+    global.CLIC.tabela.salvar('financeiro', {
+      periodo: filtroPeriodo ? filtroPeriodo.value : '',
+      projeto: filtroProjeto ? filtroProjeto.value : '',
+      tipo: filtroTipo ? filtroTipo.value : ''
+    });
+    global.CLIC.tabela.reiniciarPagina('tabela-financeiro');
+    render();
+  }
+
+  function restaurarFiltros() {
+    var f = global.CLIC.tabela.salvos('financeiro');
+    if (filtroPeriodo && f.periodo) filtroPeriodo.value = f.periodo;
+    if (filtroProjeto && f.projeto) filtroProjeto.value = f.projeto;
+    if (filtroTipo && f.tipo) filtroTipo.value = f.tipo;
   }
 
   function render() {
@@ -255,14 +280,25 @@
   /* ---------- Filtros ---------- */
   [filtroPeriodo, filtroProjeto, filtroTipo].forEach(function (sel) {
     if (sel) sel.addEventListener('change', function () {
+      global.CLIC.tabela.reiniciarPagina('tabela-financeiro');
       render();
-      if (global.CLIC.tabelaFiltros) CLIC.tabelaFiltros.atualizar('financeiro', {
-        periodo: filtroPeriodo.value, projeto: filtroProjeto.value, tipo: filtroTipo.value
+      global.CLIC.tabela.salvar('financeiro', {
+        periodo: filtroPeriodo ? filtroPeriodo.value : '',
+        projeto: filtroProjeto ? filtroProjeto.value : '',
+        tipo: filtroTipo ? filtroTipo.value : ''
       });
     });
   });
 
+  // D7: "/" foca o filtro principal; "Esc" limpa os filtros
+  global.CLIC.tabela.atalhos({
+    principal: filtroPeriodo,
+    aoEsc: limparFiltros
+  });
+
   montarFiltros();
+  restaurarFiltros();
+  global.CLIC.tabela.ligarLimparVazio('tabela-financeiro', limparFiltros);
   render();
   global.CLIC.financeiro = { render: render };
 })(window);

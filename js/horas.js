@@ -1,7 +1,6 @@
 /* =====================================================
    CLIC — horas.js
-   Tabela de horas a partir da base, filtros, totais
-   e visão restrita do funcionário.
+   Tabela de horas, filtros, persistência, paginação e total.
    ===================================================== */
 (function (global) {
   'use strict';
@@ -20,12 +19,9 @@
   var fProjeto = document.getElementById('f-projeto');
   var fCentro = document.getElementById('f-centro');
   var totalEl = document.getElementById('horas-total');
+  var chavePagina = ehFuncionario ? 'horas-funcionario' : 'horas';
+  var idFiltros = ehFuncionario ? 'filtros-horas-funcionario' : 'filtros-horas';
 
-  // Referência de "semana atual": a data do lançamento mais recente da lista
-  // já restrita ao escopo. Os dados do protótipo são de out/2026 — usar o
-  // relógio real deixaria a tabela sempre vazia. E como o funcionário enxerga
-  // apenas os próprios registros, a janela precisa ser relativa a eles, não ao
-  // histórico inteiro.
   function referencia(listaBase) {
     var maior = null;
     (listaBase || []).forEach(function (r) {
@@ -37,7 +33,6 @@
   function dentroDoPeriodo(iso, periodo, ref) {
     if (!periodo || periodo === 'todos') return true;
     var data = new Date(iso + 'T00:00:00');
-
     if (periodo === 'semana') {
       var ini = new Date(ref);
       var dia = ini.getDay();
@@ -54,9 +49,7 @@
   }
 
   function listar() {
-    var d = dados.lerDados();
-    var lista = d.registrosHoras.slice();
-
+    var lista = dados.lerDados().registrosHoras.slice();
     if (ehFuncionario && meuNome) {
       lista = lista.filter(function (r) { return r.colaborador === meuNome; });
     }
@@ -65,7 +58,6 @@
     if (fColaborador && fColaborador.value) lista = lista.filter(function (r) { return r.colaborador === fColaborador.value; });
     if (fProjeto && fProjeto.value) lista = lista.filter(function (r) { return r.projeto === fProjeto.value; });
     if (fCentro && fCentro.value) lista = lista.filter(function (r) { return r.cc === fCentro.value; });
-
     lista.sort(function (a, b) { return String(b.data).localeCompare(String(a.data)); });
     return lista;
   }
@@ -103,58 +95,93 @@
 
   function render() {
     var lista = listar();
-    var corpo = tabela.tBodies[0];
     var cols = colunas();
-
-    if (!lista.length) {
-      corpo.innerHTML = '<tr class="linha-vazia"><td colspan="' + (cols.length + 1) + '">' +
-        '<svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/></svg>' +
-        'Nenhum resultado encontrado.</td></tr>';
-    } else {
-      corpo.innerHTML = lista.map(function (r) {
-        var h = fmt.duracaoEntre(r.inicio, r.fim);
-        var celulas = {
-          data: '<td>' + fmt.dataCurta(r.data) + '</td>',
-          projeto: '<td>' + r.projeto + '</td>',
-          cc: '<td>' + r.cc + '</td>',
-          colaborador: '<td>' + r.colaborador + '</td>',
-          descricao: '<td>' + r.descricao + '</td>',
-          inicio: '<td>' + r.inicio + '</td>',
-          fim: '<td>' + r.fim + '</td>',
-          horas: '<td>' + fmt.horas(h) + '</td>',
-          custo: '<td class="num">' + fmt.moeda(h * CLIC.dados.VALOR_HORA) + '</td>'
-        };
-        return '<tr>' + cols.map(function (c) { return celulas[c]; }).join('') +
-          '<td><button class="acao-editar" type="button" data-editar="' + r.id + '">Editar</button></td></tr>';
-      }).join('');
-    }
-
-    // total do período
+    var linhas = lista.map(function (r) {
+      var h = fmt.duracaoEntre(r.inicio, r.fim);
+      var celulas = {
+        data: '<td>' + fmt.dataCurta(r.data) + '</td>',
+        projeto: '<td>' + r.projeto + '</td>',
+        cc: '<td>' + r.cc + '</td>',
+        colaborador: '<td>' + r.colaborador + '</td>',
+        descricao: '<td>' + r.descricao + '</td>',
+        inicio: '<td>' + r.inicio + '</td>',
+        fim: '<td>' + r.fim + '</td>',
+        horas: '<td>' + fmt.horas(h) + '</td>',
+        custo: '<td class="num">' + fmt.moeda(h * CLIC.dados.VALOR_HORA) + '</td>'
+      };
+      return '<tr>' + cols.map(function (c) { return celulas[c]; }).join('') +
+        '<td><button class="acao-editar" type="button" data-editar="' + r.id + '">Editar</button></td></tr>';
+    });
+    var temFiltro = !!((fPeriodo && fPeriodo.value && fPeriodo.value !== 'todos') ||
+      (fColaborador && fColaborador.value) || (fProjeto && fProjeto.value) || (fCentro && fCentro.value));
+    global.CLIC.tabela.barraLimpar(idFiltros, temFiltro, limparFiltros);
+    global.CLIC.tabela.paginar({
+      id: 'tabela-horas', linhas: linhas, colspan: cols.length + 1, comLimpar: temFiltro, rerender: render
+    });
     var totalHoras = lista.reduce(function (s, r) { return s + fmt.duracaoEntre(r.inicio, r.fim); }, 0);
     if (totalEl) totalEl.textContent = 'Total no período: ' + fmt.horas(totalHoras);
   }
 
+  function limparFiltros(campo) {
+    var soCampo = campo && typeof campo.value === 'string';
+    if (soCampo) {
+      // o período usa "todos" como valor neutro
+      var temTodos = campo.tagName === 'SELECT' &&
+        [].some.call(campo.options, function (o) { return o.value === 'todos'; });
+      campo.value = temTodos ? 'todos' : '';
+    } else {
+      if (fPeriodo) fPeriodo.value = 'todos';
+      if (fColaborador) fColaborador.value = '';
+      if (fProjeto) fProjeto.value = '';
+      if (fCentro) fCentro.value = '';
+    }
+    salvarFiltros();
+    global.CLIC.tabela.reiniciarPagina('tabela-horas');
+    render();
+  }
+
+  function restaurarFiltros() {
+    var f = global.CLIC.tabela.salvos(chavePagina);
+    if (fPeriodo && f.periodo) fPeriodo.value = f.periodo;
+    if (fColaborador && f.colaborador) fColaborador.value = f.colaborador;
+    if (fProjeto && f.projeto) fProjeto.value = f.projeto;
+    if (fCentro && f.centro) fCentro.value = f.centro;
+  }
+
+  function salvarFiltros() {
+    global.CLIC.tabela.salvar(chavePagina, {
+      periodo: fPeriodo ? fPeriodo.value : '',
+      colaborador: fColaborador ? fColaborador.value : '',
+      projeto: fProjeto ? fProjeto.value : '',
+      centro: fCentro ? fCentro.value : ''
+    });
+  }
+
   [fPeriodo, fColaborador, fProjeto, fCentro].forEach(function (sel) {
-    if (sel) sel.addEventListener('change', render);
+    if (sel) sel.addEventListener('change', function () {
+      global.CLIC.tabela.reiniciarPagina('tabela-horas');
+      render();
+      salvarFiltros();
+    });
   });
 
-  // Editar: por ora apenas sinaliza (formulário completo fica no registro manual)
+  global.CLIC.tabela.atalhos({ principal: fProjeto || fPeriodo, aoEsc: limparFiltros });
   tabela.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-editar]');
-    if (!btn) return;
-    if (global.CLIC.toast) CLIC.toast('Use o registro manual para incluir um novo lançamento.', 'info');
+    if (btn && global.CLIC.toast) CLIC.toast('Use o registro manual para incluir um novo lançamento.', 'info');
   });
 
   montarFiltros();
+  restaurarFiltros();
+  global.CLIC.tabela.ligarLimparVazio('tabela-horas', limparFiltros);
   render();
   global.CLIC.horas = {
     render: render,
-    // Depois de incluir um registro, volta o filtro para "todo o histórico":
-    // com "semana atual" ancorada no lançamento mais recente, a linha nova
-    // mudaria a janela e esconderia as anteriores.
     mostrarTodos: function () {
       if (fPeriodo) fPeriodo.value = 'todos';
+      global.CLIC.tabela.reiniciarPagina('tabela-horas');
       render();
+      salvarFiltros();
     }
   };
 })(window);

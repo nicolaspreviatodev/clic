@@ -10,6 +10,7 @@
 | `medidas` | 0 | **0** |
 | `smoke.mjs` (novo) | — | **0** em 19 verificações |
 | `interacoes.mjs` (novo) | — | **0** em 19 verificações |
+| `d6d7.mjs` (novo) | — | **0** em 22 verificações (mockups vivos, atalhos, filtros, paginação) |
 
 **`compare.mjs` — % por tela:** não foi possível calcular. As pastas `referencias/` e
 `clic-figma-spec/frames/`, citadas no enunciado, **não existem** neste repositório. O script
@@ -80,15 +81,16 @@ Resumo por grupo:
 - [x] D4 — Dashboards calculados, tooltip, legenda liga/desliga, animação de entrada e
       contagem nos KPIs (as três telas fecham os números do Figma)
 - [x] D5 — ícones: tooltips, `aria-label`, hover suave, olho da senha com `aria-pressed`
-- [ ] D6 — mockups vivos: só o gráfico de linha (traço desenhando) e as barras semanais
-      foram animados. **Não feito:** relógio contando no mockup de Horas, preenchimento
-      sequencial das etapas de Reembolso e barras de progresso de Projetos. Motivo: os
-      três ficam em mockups marcados `aria-hidden` na landing e não alteram nenhum dado;
-      priorizei o P0 e as interações que o usuário consegue acionar.
-- [ ] D7 — atalhos `/` e `Esc`, lembrar último filtro, paginação de 10 linhas: **não feitos**.
-      Motivo: os estados vazios e os filtros reais foram entregues, mas os atalhos e a
-      paginação exigem retrabalho na renderização das três tabelas; ficaram fora do escopo
-      desta rodada para não arriscar o P0 já validado.
+- [x] D6 — mockups vivos: relógio do mockup de Horas contando em tempo real a partir de
+      01:24:18, etapas de Reembolso preenchendo em sequência (150 ms) até "Em análise",
+      barras de Projetos crescendo até 72% / 35% / 100%, barras de categoria do Financeiro,
+      traço do gráfico de linha e barras semanais. Tudo dispara uma vez ao entrar na tela,
+      em 600 ms, e o repouso continua idêntico ao Figma; `prefers-reduced-motion` desliga.
+- [x] D7 — atalhos `/` (foca o filtro principal) e `Esc` (limpa o filtro focado ou todos os
+      ativos), último filtro lembrado por página em `localStorage['clic.filtros.v1']`,
+      botão "Limpar filtros" que só aparece com filtro ativo, estado vazio com a mensagem
+      pedida e link de limpar, e paginação de 10 linhas nas quatro tabelas
+      (`financeiro`, `horas`, `horas-funcionario`, `usuarios`, `projetos`).
 
 ## 4. Decisões que tomei sozinho
 
@@ -115,8 +117,8 @@ Resumo por grupo:
 
 1. **Exportar as telas do Figma** para `referencias/` — sem elas não existe a aferição de
    ≤ 1,5% por tela prevista no enunciado. É o único item do critério que ficou sem medição.
-2. **D6 e D7 parcialmente fora:** decidir se o relógio do mockup de Horas, as etapas de
-   Reembolso, os atalhos `/`/`Esc` e a paginação entram numa próxima rodada.
+2. **D6 e D7 entregues na segunda rodada.** As pendências que existiam aqui foram resolvidas:
+   ver os itens marcados `[x]` na seção 3 e a cobertura de `tools/d6d7.mjs`.
 3. **Logo da sidebar:** hoje aponta para `dashboard-financeiro.html`, como pedido em B2. Se
    o produto passar a ter outra home, o alvo precisa mudar em 10 arquivos.
 4. **Dados do protótipo em `localStorage`:** `clicRestaurarExemplos()` no console restaura.

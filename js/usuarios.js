@@ -40,16 +40,8 @@
 
   function render() {
     var lista = listar();
-    var corpo = tabela.tBodies[0];
 
-    if (!lista.length) {
-      corpo.innerHTML = '<tr class="linha-vazia"><td colspan="6">' +
-        '<svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/></svg>' +
-        'Nenhum resultado encontrado.</td></tr>';
-      return;
-    }
-
-    corpo.innerHTML = lista.map(function (u) {
+    var linhas = lista.map(function (u) {
       return '<tr>' +
         '<td>' + u.nome + '</td>' +
         '<td>' + u.email + '</td>' +
@@ -60,22 +52,75 @@
           '<a class="acao-editar" href="usuario-editar.html?id=' + u.id + '">Editar</a> ' +
           '<button class="acao-excluir" type="button" data-excluir="' + u.id + '" data-nome="' + u.nome + '">Excluir</button>' +
         '</td></tr>';
-    }).join('');
+    });
+
+    var temFiltro = !!((busca && busca.value.trim()) ||
+      (fPerfil && fPerfil.value) || (fStatus && fStatus.value));
+
+    global.CLIC.tabela.barraLimpar('filtros-usuarios', temFiltro, limparFiltros);
+    global.CLIC.tabela.paginar({
+      id: 'tabela-usuarios', linhas: linhas, colspan: 6, comLimpar: temFiltro, rerender: render
+    });
+  }
+
+  function limparFiltros(campo) {
+    var soCampo = campo && typeof campo.value === 'string';
+    if (soCampo) {
+      campo.value = '';
+    } else {
+      if (busca) busca.value = '';
+      if (fPerfil) fPerfil.value = '';
+      if (fStatus) fStatus.value = '';
+    }
+    salvarFiltros();
+    global.CLIC.tabela.reiniciarPagina('tabela-usuarios');
+    render();
+  }
+
+  function restaurarFiltros() {
+    var f = global.CLIC.tabela.salvos('usuarios');
+    if (busca && f.busca) busca.value = f.busca;
+    if (fPerfil && f.perfil) fPerfil.value = f.perfil;
+    if (fStatus && f.status) fStatus.value = f.status;
+  }
+
+  function salvarFiltros() {
+    global.CLIC.tabela.salvar('usuarios', {
+      busca: busca ? busca.value : '',
+      perfil: fPerfil ? fPerfil.value : '',
+      status: fStatus ? fStatus.value : ''
+    });
   }
 
   /* ---------- Filtros ---------- */
-  if (busca) busca.addEventListener('input', render);
+  if (busca) {
+    busca.addEventListener('input', function () {
+      global.CLIC.tabela.reiniciarPagina('tabela-usuarios');
+      render();
+      salvarFiltros();
+    });
+  }
   if (fPerfil) {
     fPerfil.innerHTML = '<option value="">Perfil: Todos</option>' +
-      '<option>Perfil: Administrador</option><option>Perfil: Gestor</option><option>Perfil: Funcionário</option>';
+      '<option value="Administrador">Perfil: Administrador</option>' +
+      '<option value="Gestor">Perfil: Gestor</option>' +
+      '<option value="Funcionário">Perfil: Funcionário</option>';
   }
   if (fStatus) {
     fStatus.innerHTML = '<option value="">Status: Todos</option>' +
-      '<option>Status: Ativo</option><option>Status: Inativo</option>';
+      '<option value="Ativo">Status: Ativo</option>' +
+      '<option value="Inativo">Status: Inativo</option>';
   }
   [fPerfil, fStatus].forEach(function (sel) {
-    if (sel) sel.addEventListener('change', render);
+    if (sel) sel.addEventListener('change', function () {
+      global.CLIC.tabela.reiniciarPagina('tabela-usuarios');
+      render();
+      salvarFiltros();
+    });
   });
+
+  // D7: "/" foca a busca; "Esc" limpa os filtros
+  global.CLIC.tabela.atalhos({ principal: busca, aoEsc: limparFiltros });
 
   /* ---------- Exclusão ---------- */
   var modalEl = document.getElementById('modal-excluir');
@@ -149,6 +194,8 @@
     });
   }
 
+  restaurarFiltros();
+  global.CLIC.tabela.ligarLimparVazio('tabela-usuarios', limparFiltros);
   render();
   global.CLIC.usuarios = { render: render };
 })(window);

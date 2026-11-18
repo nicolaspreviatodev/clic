@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{if(!sessionStorage.getItem("clic.sessao")&&!localStorage.getItem("clic.sessao")){location.replace("entrar.html");}}catch(e){}})();</script>
 <div class="clic-app">
   <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
     <a class="clic-sidebar__logo" href="dashboard-financeiro.html" aria-label="CLIC — dashboard">
@@ -26,7 +27,7 @@
       <a class="clic-menu-btn" href="financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</a>
       <a class="clic-menu-btn" href="projetos.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="M9 13h6"/></svg>Projetos</a>
       <a class="clic-menu-btn" href="horas.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>Horas</a>
-      <a class="clic-menu-btn" href="em-construcao.html?secao=Reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
+      <a class="clic-menu-btn" href="em-construcao.html?secao=reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
       <a class="clic-menu-btn" href="usuarios.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Usuários</a>
     </nav>
     <div class="clic-sidebar__perfil">
@@ -43,32 +44,32 @@
     <div class="dash-linha-topo">
       <div class="dash-abas" role="tablist" aria-label="Dashboards">
         <a href="dashboard-financeiro.html" role="tab" aria-selected="false">Financeiro</a>
-        <a href="em-construcao.html?secao=Dashboard%20%C2%B7%20Projetos" role="tab" aria-selected="false">Projetos</a>
+        <a href="em-construcao.html?secao=projetos" role="tab" aria-selected="false">Projetos</a>
         <a href="dashboard-horas.html" role="tab" aria-selected="true" class="ativo">Horas</a>
         <a href="dashboard-reembolso.html" role="tab" aria-selected="false">Reembolso</a>
       </div>
       <button class="dash-periodo" type="button">Período: out/2026</button>
     </div>
 
-    <div class="clic-kpis clic-kpis--dash app-secao">
-      <div class="clic-kpi clic-kpi--dash">
+    <div class="clic-kpis clic-kpis--dash app-secao" id="kpi-dash-horas">
+      <div class="clic-kpi clic-kpi--dash kpi-1">
         <p class="clic-kpi__rotulo">Horas lançadas no período</p>
         <p class="clic-kpi__valor">89h30</p>
         <p class="clic-kpi__nota">4 centros de custo</p>
       </div>
-      <div class="clic-kpi clic-kpi--dash clic-kpi--escuro">
+      <div class="clic-kpi clic-kpi--dash clic-kpi--escuro kpi-3">
         <p class="clic-kpi__rotulo">Horas não lançadas</p>
         <p class="clic-kpi__valor">12h30</p>
         <p class="clic-kpi__nota">3 colaboradores com pendência</p>
       </div>
-      <div class="clic-kpi clic-kpi--dash">
+      <div class="clic-kpi clic-kpi--dash kpi-2">
         <p class="clic-kpi__rotulo">Custo de mão de obra</p>
         <p class="clic-kpi__valor">R$ 8.055,00</p>
         <p class="clic-kpi__nota">horas × valor/hora</p>
       </div>
     </div>
 
-    <div class="dash-grid" style="grid-template-columns:720px 1fr">
+    <div class="dash-grid dash-grid--lateral">
       <section class="dash-card">
         <h2 class="dash-card__titulo">Horas por projeto</h2>
         <div id="barras-projetos-horas"></div>
@@ -102,7 +103,13 @@
   </main>
 </div>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/sessao.js" defer></script>
+<script src="js/formatadores.js" defer></script>
+<script src="js/dados.js" defer></script>
+<script src="js/toasts.js" defer></script>
+<script src="js/ui.js" defer></script>
 <script src="js/app.js" defer></script>
 <script src="js/charts.js" defer></script>
+<script src="js/dashboards.js" defer></script>
 </body>
 </html>

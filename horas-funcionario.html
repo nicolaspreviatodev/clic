@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{if(!sessionStorage.getItem("clic.sessao")&&!localStorage.getItem("clic.sessao")){location.replace("entrar.html");}}catch(e){}})();</script>
 <div class="clic-app">
   <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
     <a class="clic-sidebar__logo" href="horas-funcionario.html" aria-label="CLIC">
@@ -68,32 +69,36 @@
     </div>
 
     <div class="app-filtros app-filtros--horas">
-      <button class="clic-input clic-input--select" type="button">Período: semana atual</button>
-      <button class="clic-input clic-input--select" type="button">Projeto: Todos</button>
-      <button class="clic-input clic-input--select" type="button">Centro de custo: Todos</button>
-      <span class="app-total">Total no período: 14h00</span>
+      <select class="clic-input clic-input--select" id="f-periodo" aria-label="Período">
+        <option value="semana">Período: semana atual</option>
+        <option value="mes">Período: este mês</option>
+        <option value="todos">Período: todo o histórico</option>
+      </select>
+      <select class="clic-input clic-input--select" id="f-projeto" aria-label="Projeto"></select>
+      <select class="clic-input clic-input--select" id="f-centro" aria-label="Centro de custo"></select>
+      <span class="app-total" id="horas-total">Total no período: 0h00</span>
     </div>
 
     <div class="clic-tabela-wrap">
       <div class="table-responsive">
-        <table class="clic-tabela" id="tabela-horas">
+        <table class="clic-tabela" id="tabela-horas" data-escopo="proprio">
           <thead>
             <tr><th>Data</th><th>Projeto</th><th>Centro de custo</th><th>Descrição</th><th>Início</th><th>Fim</th><th>Horas</th><th>Ações</th></tr>
           </thead>
-          <tbody>
-            <tr><td>12/10</td><td>Projeto Alfa</td><td>26038</td><td>Levantamento de requisitos</td><td>09:00</td><td>12:30</td><td>3h30</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>14/10</td><td>Projeto Alfa</td><td>26038</td><td>Modelagem do banco de dados</td><td>08:30</td><td>11:00</td><td>2h30</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>15/10</td><td>Projeto Beta</td><td>25102</td><td>Testes e correções</td><td>14:00</td><td>17:30</td><td>3h30</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>16/10</td><td>Projeto Alfa</td><td>24014</td><td>Reunião com o cliente</td><td>10:00</td><td>11:30</td><td>1h30</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>17/10</td><td>Projeto Alfa</td><td>26038</td><td>Revisão do protótipo</td><td>09:00</td><td>12:00</td><td>3h00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
   </main>
 </div>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/sessao.js" defer></script>
+<script src="js/formatadores.js" defer></script>
+<script src="js/dados.js" defer></script>
+<script src="js/toasts.js" defer></script>
+<script src="js/ui.js" defer></script>
 <script src="js/app.js" defer></script>
+<script src="js/horas.js" defer></script>
 <script src="js/timer.js" defer></script>
 </body>
 </html>

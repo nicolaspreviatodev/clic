@@ -6,6 +6,8 @@
   <title>Recuperar senha — CLIC</title>
   <meta name="description" content="Recupere o acesso à sua conta CLIC em poucas etapas.">
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <meta name="theme-color" content="#0C3C67">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,10 +18,14 @@
   <link rel="stylesheet" href="css/auth.css">
 </head>
 <body class="auth-page">
+<noscript><div class="aviso-js">Ative o JavaScript para usar o CLIC.</div></noscript>
 
-  <aside class="auth-painel" aria-hidden="true">
+
+  <aside class="auth-painel">
     <div class="auth-painel__logo">
-      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+      <a href="index.html" aria-label="Ir para a página inicial do CLIC">
+        <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+      </a>
     </div>
     <div class="auth-painel__mensagem">
       <div class="auth-painel__gantt">
@@ -71,7 +77,7 @@
             <input class="clic-campo__input" type="text" id="rec-codigo" name="codigo" placeholder="Código de 6 dígitos" inputmode="numeric" autocomplete="one-time-code" required>
             <p class="clic-campo__erro" role="alert">Informe o código de 6 dígitos.</p>
           </div>
-          <div class="auth-reenvio">Não recebeu o código? <a href="#" onclick="return false">Reenviar.</a></div>
+          <div class="auth-reenvio">Não recebeu o código? <button class="auth-link" type="button" data-reenviar>Reenviar.</button></div>
           <button class="clic-btn-auth" type="submit">Redefinir senha</button>
         </form>
         <a class="auth-voltar" href="entrar.html">Voltar ao login</a>
@@ -115,6 +121,8 @@
   </main>
 
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/sessao.js" defer></script>
+<script src="js/toasts.js" defer></script>
 <script src="js/auth.js" defer></script>
 </body>
 </html>

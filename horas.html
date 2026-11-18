@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{if(!sessionStorage.getItem("clic.sessao")&&!localStorage.getItem("clic.sessao")){location.replace("entrar.html");}}catch(e){}})();</script>
 <div class="clic-app">
   <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
     <a class="clic-sidebar__logo" href="dashboard-financeiro.html" aria-label="CLIC — dashboard">
@@ -26,7 +27,7 @@
       <a class="clic-menu-btn" href="financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</a>
       <a class="clic-menu-btn" href="projetos.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="M9 13h6"/></svg>Projetos</a>
       <a class="clic-menu-btn" href="horas.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>Horas</a>
-      <a class="clic-menu-btn" href="em-construcao.html?secao=Reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
+      <a class="clic-menu-btn" href="em-construcao.html?secao=reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
       <a class="clic-menu-btn" href="usuarios.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Usuários</a>
     </nav>
     <div class="clic-sidebar__perfil">
@@ -58,7 +59,7 @@
             <select class="clic-input clic-input--select" id="reg-projeto" aria-label="Projeto">
               <option>Projeto</option><option>Projeto Alfa</option><option>Projeto Beta</option>
             </select>
-            <input class="clic-input" id="reg-codigo" placeholder="Codigo" aria-label="Código">
+            <input class="clic-input" id="reg-codigo" placeholder="Código" aria-label="Código">
             <input class="clic-input" id="reg-data" type="date" aria-label="Data">
             <input class="clic-input" id="reg-inicio" type="time" aria-label="Início">
             <input class="clic-input" id="reg-fim" type="time" aria-label="Fim">
@@ -72,10 +73,14 @@
     </div>
 
     <div class="app-filtros app-filtros--horas">
-      <button class="clic-input clic-input--select" type="button">Período: semana atual</button>
-      <button class="clic-input clic-input--select" type="button">Colaborador: Todos</button>
-      <button class="clic-input clic-input--select" type="button">Projeto: Todos</button>
-      <button class="clic-input clic-input--select" type="button">Centro de custo: Todos</button>
+      <select class="clic-input clic-input--select" id="f-periodo" aria-label="Período">
+        <option value="semana">Período: semana atual</option>
+        <option value="mes">Período: este mês</option>
+        <option value="todos">Período: todo o histórico</option>
+      </select>
+      <select class="clic-input clic-input--select" id="f-colaborador" aria-label="Colaborador"></select>
+      <select class="clic-input clic-input--select" id="f-projeto" aria-label="Projeto"></select>
+      <select class="clic-input clic-input--select" id="f-centro" aria-label="Centro de custo"></select>
     </div>
 
     <div class="clic-tabela-wrap">
@@ -84,21 +89,20 @@
           <thead>
             <tr><th>Data</th><th>Projeto</th><th>CC</th><th>Colaborador</th><th>Descrição</th><th>Início</th><th>Fim</th><th>Horas</th><th class="num">Custo</th><th>Ações</th></tr>
           </thead>
-          <tbody>
-            <tr><td>12/10</td><td>Projeto Alfa</td><td>26038</td><td>Carlos Eduardo</td><td>Levantamento de requisitos</td><td>09:00</td><td>12:30</td><td>3h30</td><td class="num">R$ 315,00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>13/10</td><td>Projeto Alfa</td><td>24014</td><td>Nicolas Silva</td><td>Reunião com o cliente</td><td>14:00</td><td>18:00</td><td>4h00</td><td class="num">R$ 360,00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>14/10</td><td>Projeto Alfa</td><td>26038</td><td>Carlos Eduardo</td><td>Modelagem do banco de dados</td><td>08:30</td><td>11:00</td><td>2h30</td><td class="num">R$ 225,00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>14/10</td><td>Projeto Alfa</td><td>24014</td><td>Luiz Bueno</td><td>Desenvolvimento do módulo de login</td><td>10:00</td><td>15:00</td><td>5h00</td><td class="num">R$ 450,00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>15/10</td><td>Projeto Alfa</td><td>26038</td><td>Nicolas Silva</td><td>Revisão do protótipo</td><td>09:00</td><td>13:00</td><td>4h00</td><td class="num">R$ 360,00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-            <tr><td>15/10</td><td>Projeto Beta</td><td>25102</td><td>Carlos Eduardo</td><td>Testes e correções</td><td>14:00</td><td>17:30</td><td>3h30</td><td class="num">R$ 315,00</td><td><a class="acao-editar" href="#" onclick="return false">Editar</a></td></tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
   </main>
 </div>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/sessao.js" defer></script>
+<script src="js/formatadores.js" defer></script>
+<script src="js/dados.js" defer></script>
+<script src="js/toasts.js" defer></script>
+<script src="js/ui.js" defer></script>
 <script src="js/app.js" defer></script>
+<script src="js/horas.js" defer></script>
 <script src="js/timer.js" defer></script>
 </body>
 </html>

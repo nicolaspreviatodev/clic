@@ -55,8 +55,24 @@ const page = await browser.newPage({
 
 const resultados = [];
 
+// Telas internas exigem sessão (Fase C3). A sessão é injetada a cada
+// navegação; o localStorage é limpo por página para que uma captura não
+// herde dados alterados por outra.
+await page.addInitScript(() => {
+  try {
+    if (!sessionStorage.getItem('clic.sessao')) {
+      sessionStorage.setItem('clic.sessao', JSON.stringify({
+        email: 'carloseduardomilann@gmail.com',
+        nome: 'Carlos Milan',
+        perfil: 'Administrador'
+      }));
+    }
+  } catch (e) {}
+});
+
 for (const [arquivo, altura] of lista) {
   await page.setViewportSize({ width: 1440, height: altura });
+  await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} }).catch(() => {});
   await page.goto(`${BASE}/${arquivo}`, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   await page.addStyleTag({

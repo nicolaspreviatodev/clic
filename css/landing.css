@@ -111,6 +111,15 @@
 .clic-recurso__check .ic{width:12px;height:12px;color:var(--clic-navy);stroke-width:3}
 .clic-recurso__item span{font:400 18px/1.5 var(--clic-font-inter);color:var(--clic-texto)}
 .clic-recurso__mock{width:600px;flex:none}
+.clic-recurso__botao{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:328px;height:56px;border-radius:8px;
+  background:var(--clic-amarelo);border:1px solid #fff;
+  font:600 18px/22px var(--clic-font-inter);color:var(--clic-navy);
+  transition:background-color .18s ease;
+}
+.clic-recurso__botao:hover{background:var(--clic-amarelo-hover)}
+@media (max-width:575.98px){.clic-recurso__botao{width:100%}}
 .clic-recurso__mock .clic-mockup{overflow:hidden}
 .clic-recurso--fin .clic-mockup{height:593px}
 .clic-recurso--proj .clic-mockup{height:440px}
@@ -189,6 +198,7 @@
 .clic-mockup__comprovante-valor{font:600 20px/24px var(--clic-font-inter);color:var(--clic-navy);margin-top:4px}
 .clic-mockup__comprovante-data{font:400 11px/13px var(--clic-font-inter);color:var(--clic-texto);margin-top:4px}
 .clic-mockup__etapas{display:flex;flex-direction:column;gap:10px}
+.clic-mockup__etapa > div{min-width:0}
 .clic-mockup__etapa{display:flex;gap:10px;align-items:flex-start}
 .clic-mockup__etapa-icone{
   width:24px;height:24px;border-radius:12px;background:var(--clic-amarelo);
@@ -197,6 +207,9 @@
 .clic-mockup__etapa-icone .ic{width:12px;height:12px;color:var(--clic-navy);stroke-width:3}
 .clic-mockup__etapa-titulo{font:600 12px/15px var(--clic-font-inter);color:var(--clic-navy)}
 .clic-mockup__etapa-sub{font:400 10px/12px var(--clic-font-inter);color:var(--clic-texto);margin-top:2px}
+
+/* ---------- Âncoras com header fixo (B7) ---------- */
+.clic-ferramentas,.clic-recurso{scroll-margin-top:104px}
 
 /* ---------- Responsivo ---------- */
 @media (max-width:1199.98px){
@@ -213,14 +226,14 @@
   .clic-beneficios__grade{grid-template-columns:1fr}
 }
 @media (max-width:767.98px){
+  .clic-recurso__mock{justify-content:flex-start;overflow-x:auto}
+  .clic-recurso__mock .clic-mockup{width:600px;min-width:600px}
   .clic-hero{padding:64px 0}
   .clic-hero__composicao{height:auto;padding:24px 0}
   .clic-hero__elipse{position:relative;inset:auto;width:100%;max-width:360px;height:260px;margin:0 auto}
   .clic-hero__disco{position:relative;margin:-200px auto 24px;left:auto;top:auto}
-  .clic-hero__chips{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:static}
   .clic-hero__chip{position:static;width:auto;justify-content:flex-start}
   .clic-ferramentas__grade{grid-template-columns:1fr}
   .clic-cta__titulo{font-size:clamp(32px,6vw,50px)}
   .clic-cta__elipse{display:none}
-  .clic-footer__topo{flex-direction:column;gap:40px}
 }

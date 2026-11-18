@@ -17,9 +17,11 @@
 </head>
 <body class="auth-page">
 
-  <aside class="auth-painel" aria-hidden="true">
+  <aside class="auth-painel">
     <div class="auth-painel__logo">
-      <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+      <a href="index.html" aria-label="Ir para a página inicial do CLIC">
+        <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
+      </a>
     </div>
     <div class="auth-painel__mensagem">
       <div class="auth-painel__gantt">
@@ -71,7 +73,7 @@
             <input class="clic-campo__input" type="text" id="rec-codigo" name="codigo" placeholder="Código de 6 dígitos" inputmode="numeric" autocomplete="one-time-code" required>
             <p class="clic-campo__erro" role="alert">Informe o código de 6 dígitos.</p>
           </div>
-          <div class="auth-reenvio">Não recebeu o código? <a href="#" onclick="return false">Reenviar.</a></div>
+          <div class="auth-reenvio">Não recebeu o código? <button class="auth-link" type="button" data-reenviar>Reenviar.</button></div>
           <button class="clic-btn-auth" type="submit">Redefinir senha</button>
         </form>
         <a class="auth-voltar" href="entrar.html">Voltar ao login</a>

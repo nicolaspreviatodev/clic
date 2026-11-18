@@ -10,7 +10,7 @@
 
 /* ---------- Painel institucional 600px ---------- */
 .auth-painel{
-  width:600px;flex:none;background:var(--clic-navy);
+  width:600px;flex:1 1 600px;min-width:0;max-width:600px;background:var(--clic-navy);
   padding:48px 56px;display:flex;flex-direction:column;justify-content:space-between;
   min-height:100vh;
 }
@@ -35,7 +35,7 @@
 
 /* ---------- Painel de acesso 840px ---------- */
 .auth-acesso{
-  flex:1;display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:0;display:flex;align-items:center;justify-content:center;
   padding:48px 24px;
 }
 .auth-bloco{width:440px;max-width:100%;display:flex;flex-direction:column;gap:32px}

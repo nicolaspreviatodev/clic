@@ -39,7 +39,7 @@
   <main class="clic-app__main">
     <div class="app-topo">
       <h1 class="clic-app__titulo">Usuários e perfis</h1>
-      <a class="app-btn-novo" href="#" onclick="return false"><svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Novo usuário</a>
+      <button class="app-btn-novo" type="button" data-novo-usuario><svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Novo usuário</a>
     </div>
     <div class="app-filtros">
       <div class="app-filtros__grupo">
@@ -58,12 +58,12 @@
             <tr><th>Nome</th><th>E-mail</th><th>Perfil</th><th>Status</th><th>Último acesso</th><th>Ações</th></tr>
           </thead>
           <tbody>
-            <tr><td>Carlos Milan</td><td>carloseduardomilann@gmail.com</td><td><span class="clic-badge clic-badge--navy">Administrador</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 09:12</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Carlos Milan">Excluir</a></td></tr>
-            <tr><td>Nicolas Silva</td><td>nicolassilvapreviato@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 08:40</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Nicolas Silva">Excluir</a></td></tr>
-            <tr><td>Luccas Matheus</td><td>luccas.matheus@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 17:55</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Luccas Matheus">Excluir</a></td></tr>
-            <tr><td>Lucas Willian</td><td>salinhastropa@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 14:20</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Lucas Willian">Excluir</a></td></tr>
-            <tr><td>Matheus Prudente</td><td>matheusprudente@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--cinza">Inativo</span></td><td>21/10 10:03</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Matheus Prudente">Excluir</a></td></tr>
-            <tr><td>Luiz Bueno</td><td>luizbueno@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>04/11 11:30</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <a class="acao-excluir" href="#" data-excluir="Luiz Bueno">Excluir</a></td></tr>
+            <tr><td>Carlos Milan</td><td>carloseduardomilann@gmail.com</td><td><span class="clic-badge clic-badge--navy">Administrador</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 09:12</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Carlos Milan">Excluir</button></td></tr>
+            <tr><td>Nicolas Silva</td><td>nicolassilvapreviato@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 08:40</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Nicolas Silva">Excluir</button></td></tr>
+            <tr><td>Luccas Matheus</td><td>luccas.matheus@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 17:55</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Luccas Matheus">Excluir</button></td></tr>
+            <tr><td>Lucas Willian</td><td>salinhastropa@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 14:20</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Lucas Willian">Excluir</button></td></tr>
+            <tr><td>Matheus Prudente</td><td>matheusprudente@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--cinza">Inativo</span></td><td>21/10 10:03</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Matheus Prudente">Excluir</button></td></tr>
+            <tr><td>Luiz Bueno</td><td>luizbueno@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>04/11 11:30</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Luiz Bueno">Excluir</button></td></tr>
           </tbody>
         </table>
       </div>

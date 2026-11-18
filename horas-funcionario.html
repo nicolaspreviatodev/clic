@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{if(!sessionStorage.getItem("clic.sessao")&&!localStorage.getItem("clic.sessao")){location.replace("entrar.html");}}catch(e){}})();</script>
+<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{var s=sessionStorage.getItem("clic.sessao")||localStorage.getItem("clic.sessao");if(!s){location.replace("entrar.html");return;}var u=JSON.parse(s);if(u&&u.perfil==="Funcionário"&&!/horas-funcionario.html$/.test(location.pathname)){location.replace("horas-funcionario.html");}}catch(e){location.replace("entrar.html");}})();</script>
 <div class="clic-app">
   <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
-    <a class="clic-sidebar__logo" href="horas-funcionario.html" aria-label="CLIC">
+    <a class="clic-sidebar__logo" href="index.html" aria-label="CLIC — página inicial">
       <img src="assets/img/logo-oficial-dark.png" alt="CLIC" width="120" height="144">
     </a>
     <nav class="clic-sidebar__menu" aria-label="Navegação do sistema">

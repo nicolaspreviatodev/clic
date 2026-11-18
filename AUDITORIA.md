@@ -99,3 +99,32 @@ percentual de diferença — a conferência de fidelidade foi feita por medidas 
 | D7-08 | internas | falha na substituição deixou `horas.js` sintaticamente quebrado | `js/horas.js` | arquivo reescrito e validado com `node --check` | Corrigido |
 
 Cobertura nova: `tools/d6d7.mjs` — 22 verificações, todas em verde.
+
+## Fase 3 — Correções de bugs, cortes e coerência
+
+Verificado em 16 páginas × larguras 320/375/768/1024/1280/1440 (corte de conteúdo, rolagem horizontal,
+imagens quebradas/distorcidas, HTML desbalanceado, erros de console, rotas por perfil). Resultado final: 0 problemas.
+Nenhum texto existente foi alterado.
+
+| ID | Página | Problema | Correção |
+|----|--------|----------|----------|
+| E-01 | landing | Seção Reembolso com 3 `</div>` faltando: texto e botão "Solicitar reembolso" ficavam presos e escondidos dentro do mockup | fechamentos corrigidos (`index.html`) |
+| E-02 | landing | Mockups com altura fixa + `overflow:hidden` cortavam o rodapé ("Precisa de ajuda?", categorias) | alturas do Figma viram `min-height` |
+| E-03 | landing | Textos do mockup quebrando ("R$ / 12.480,00", "Visão / geral") | `white-space:nowrap` e ajuste fino de espaçamento |
+| E-04 | landing | Abaixo de 1200 px o CSS escondia a palavra "controle" do título do hero | destaque amarelo em `em`, palavra sempre visível |
+| E-05 | landing | Mockups com rolagem lateral (cortados) no celular | reduzidos proporcionalmente (`js/mockups.js`) |
+| E-06 | sobre | Seções com altura fixa + `overflow:hidden` cortavam cards (até em 1440 px) | `min-height` + respiro inferior |
+| E-07 | sobre | Composição do hero vazava 16 px para a seção seguinte | posicionada no centro vertical do frame (186 px do topo) |
+| E-08 | landing/sobre | Abaixo de 992 px o menu (2ª linha do header) ficava sem fundo, por cima do conteúdo | header com altura automática |
+| E-09 | internas | Funcionário acessava qualquer tela digitando a URL | guarda de sessão também valida o perfil |
+| E-10 | em construção | Nenhum item do menu ativo | item correspondente a `?secao=` fica ativo |
+| E-11 | dashboards | Abas cortadas verticalmente no celular | abas quebram linha |
+| E-12 | landing/sobre | Ícone do X era um símbolo de porcentagem | ícone do X |
+| E-13 | landing/sobre | Botão "voltar ao topo" invisível sobre fundo navy | borda branca |
+| E-14 | landing/sobre | Cards sem interação consistente | card de Ferramentas inteiro clicável (`stretched-link` do Bootstrap), hover/foco em chips e cards do Sobre |
+
+**Novo:** seção "Sobre o CLIC" em `sobre.html` (texto fornecido + `assets/img/sobre-clic.webp`), grid do Bootstrap.
+| E-15 | dashboards | Caixa das abas com largura fixa (495 px) deixava espaço em branco | largura acompanha as abas; no celular elas dividem a linha por igual |
+| E-16 | internas | Logo da sidebar não levava à Home (ia para o próprio dashboard) | logo leva para `index.html` em todas as telas internas |
+| E-17 | dashboards | Aba "Projetos" abria a tela "Em construção" | aponta para `projetos.html` |
+| E-18 | internas | Item "Reembolso" do menu abria "Em construção", apesar de existir o dashboard de reembolso | aponta para `dashboard-reembolso.html` (item fica ativo) |

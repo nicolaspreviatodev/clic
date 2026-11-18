@@ -48,7 +48,8 @@
 
 /* Composição visual do hero (logo + chips) */
 .sobre-hero__visual{
-  position:absolute;right:0;top:186px;width:560px;height:440px;
+  /* 186px a partir do topo do frame (812): centralizado na vertical */
+  position:absolute;right:0;top:-36px;width:560px;height:440px;
 }
 .sobre-hero__elipse{
   position:absolute;left:20px;top:20px;width:520px;height:400px;
@@ -79,7 +80,7 @@
 .sobre-secao__inner{max-width:1200px;margin:0 auto;padding:0 24px}
 @media (min-width:1248px){.sobre-secao__inner{padding:0}}
 
-.sobre-proposta{background:#fff;height:420px;padding-top:30px;overflow:hidden}
+.sobre-proposta{background:#fff;min-height:420px;padding:30px 0 64px}
 .sobre-proposta__titulo{
   margin-top:22px;font:700 40px/1.12 var(--clic-font-inter);color:var(--sobre-navy);
   max-width:1000px;
@@ -95,12 +96,19 @@
   background:#fff;border:1px solid var(--sobre-card-borda);border-radius:16px;
   min-height:112px;padding:20px 22px;display:flex;gap:13px;align-items:flex-start;
 }
+.sobre-card-num,.sobre-valor,.sobre-membro{
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.sobre-card-num:hover,.sobre-valor:hover,.sobre-membro:hover{
+  transform:translateY(-4px);box-shadow:var(--clic-sombra);border-color:var(--clic-azul-aco);
+}
+.sobre-identidade .sobre-valor:hover{box-shadow:0 12px 28px rgba(0,0,0,.22);border-color:var(--sobre-amarelo)}
 .sobre-card-num__n{font:700 18px/28px var(--clic-font-inter);color:var(--sobre-amarelo);flex:none}
 .sobre-card-num__t{font:700 20px/1.2 var(--clic-font-inter);color:var(--sobre-navy)}
 .sobre-card-num__d{font:400 15px/1.5 var(--clic-font-inter);color:var(--sobre-texto);margin-top:4px}
 
 /* Identidade (navy) */
-.sobre-identidade{background:var(--sobre-navy);height:440px;padding:60px 0 0;margin-top:0;overflow:hidden}
+.sobre-identidade{background:var(--sobre-navy);min-height:440px;padding:60px 0 64px;margin-top:0}
 .sobre-identidade__titulo{
   margin-top:24px;font:700 42px/1.15 var(--clic-font-inter);color:#fff;
 }
@@ -115,7 +123,7 @@
 .sobre-valor__d{font:400 17px/1.5 var(--clic-font-inter);color:var(--sobre-texto);margin-top:10px}
 
 /* Equipe */
-.sobre-equipe{background:var(--sobre-azul);height:430px;padding:50px 0 0;overflow:hidden}
+.sobre-equipe{background:var(--sobre-azul);min-height:430px;padding:50px 0 64px}
 .sobre-equipe__titulo{margin-top:24px;font:700 40px/1.3 var(--clic-font-inter);color:var(--sobre-navy)}
 .sobre-equipe__desc{margin-top:13px;font:400 18px/1.6 var(--clic-font-inter);color:var(--sobre-texto);max-width:1000px}
 .sobre-equipe__cards{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:25px}
@@ -132,7 +140,7 @@
 .sobre-membro__funcao{font:400 14px/28px var(--clic-font-inter);color:var(--sobre-texto)}
 
 /* Futuro */
-.sobre-futuro{background:var(--sobre-hero);height:380px;padding:60px 0 0;overflow:hidden}
+.sobre-futuro{background:var(--sobre-hero);min-height:380px;padding:60px 0 64px}
 .sobre-futuro__titulo{font:700 42px/1.2 var(--clic-font-inter);color:var(--sobre-navy);max-width:1000px}
 .sobre-futuro__desc{margin-top:9px;font:400 18px/1.6 var(--clic-font-inter);color:var(--sobre-texto);max-width:1100px}
 .sobre-futuro__tags{display:flex;gap:25px;margin-top:31px;flex-wrap:wrap}
@@ -141,6 +149,19 @@
   background:#fff;font:600 14px/17px var(--clic-font-inter);color:var(--sobre-navy);
 }
 
+/* ---------- Sobre o CLIC (texto + imagem) ---------- */
+.sobre-clic{background:var(--sobre-azul);padding:96px 0}
+.sobre-clic__titulo{font:700 42px/1.15 var(--clic-font-inter);color:var(--sobre-navy);margin-bottom:20px}
+.sobre-clic__subtitulo{margin-top:22px;font:700 28px/1.25 var(--clic-font-inter);color:var(--sobre-navy)}
+.sobre-clic__texto p{margin-top:16px;font:400 18px/1.6 var(--clic-font-inter);color:var(--sobre-texto)}
+.sobre-clic__texto p:first-of-type{margin-top:20px}
+.sobre-clic__figura{
+  margin:0;border-radius:20px;overflow:hidden;background:#EFE8E1;
+  border:1px solid var(--sobre-card-borda);box-shadow:0 16px 40px rgba(17,62,99,.12);
+  aspect-ratio:3/2;
+}
+.sobre-clic__figura img{display:block;width:100%;height:100%;object-fit:cover}
+
 /* ---------- Responsivo ---------- */
 @media (max-width:1199.98px){
   .sobre-hero{min-height:auto;padding:160px 0 64px}
@@ -148,7 +169,18 @@
   .sobre-proposta__cards,.sobre-identidade__cards{grid-template-columns:1fr}
   .sobre-equipe__cards{grid-template-columns:repeat(2,1fr)}
 }
+@media (max-width:991.98px){
+  .sobre-clic{padding:72px 0}
+}
 @media (max-width:767.98px){
+  .sobre-clic{padding:56px 0}
+  .sobre-clic__titulo{font-size:clamp(30px,8vw,42px)}
+  .sobre-clic__subtitulo{font-size:clamp(22px,6vw,28px)}
+  .sobre-clic__texto p{font-size:16px}
+  .sobre-proposta__titulo,.sobre-equipe__titulo{font-size:clamp(28px,7.5vw,40px)}
+  .sobre-identidade__titulo,.sobre-futuro__titulo{font-size:clamp(28px,7.5vw,42px)}
+  .sobre-proposta__texto{font-size:17px}
+  .sobre-proposta,.sobre-identidade,.sobre-equipe,.sobre-futuro{min-height:0;padding-top:48px;padding-bottom:48px}
   .sobre-hero{padding:120px 0 48px}
   .sobre-hero__titulo{font-size:clamp(32px,6vw,46px)}
   .sobre-hero__visual{height:auto}

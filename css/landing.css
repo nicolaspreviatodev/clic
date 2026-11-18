@@ -24,7 +24,7 @@
   position:relative;display:inline-block;isolation:isolate;
 }
 .clic-hero__marca::after{
-  content:"";position:absolute;left:-5px;right:-5px;bottom:4px;height:30px;
+  content:"";position:absolute;left:-.08em;right:-.08em;bottom:.065em;height:.484em;/* 30px e 4px em 62px */
   background:var(--clic-amarelo);border-radius:6px;z-index:-1;
 }
 
@@ -56,7 +56,11 @@
   font:600 18px/22px var(--clic-font-inter);color:var(--clic-navy);
   white-space:nowrap;
 }
-.clic-hero__chip .ic{width:24px;height:24px;color:var(--clic-azul-aco)}
+.clic-hero__chip .ic{width:24px;height:24px;color:var(--clic-azul-aco);flex:none}
+.clic-hero__chip[role="link"]{cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.clic-hero__chip[role="link"]:hover,.clic-hero__chip[role="link"]:focus-visible{
+  transform:translateY(-3px);border-color:var(--clic-azul-aco);box-shadow:0 12px 28px rgba(12,60,103,.14);
+}
 .clic-hero__chip--projetos{left:416px;top:58.5px}
 .clic-hero__chip--financeiro{left:-18px;top:27.5px}
 .clic-hero__chip--horas{left:16px;top:350px}
@@ -71,10 +75,13 @@
 }
 .clic-ferramenta{
   background:#fff;border:1px solid var(--clic-borda);border-radius:12px;
-  padding:32px;display:flex;flex-direction:column;gap:24px;height:308px;
+  padding:32px;display:flex;flex-direction:column;gap:24px;min-height:308px;
   transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
 }
-.clic-ferramenta:hover{transform:translateY(-4px);box-shadow:var(--clic-sombra);border-color:var(--clic-azul-aco)}
+.clic-ferramenta:hover,.clic-ferramenta:focus-within{transform:translateY(-4px);box-shadow:var(--clic-sombra);border-color:var(--clic-azul-aco)}
+.clic-ferramenta:hover .clic-saiba-mais .ic,.clic-ferramenta:focus-within .clic-saiba-mais .ic{transform:translateX(4px)}
+.clic-ferramenta .stretched-link:focus-visible{outline:none}
+.clic-ferramenta:has(.stretched-link:focus-visible){outline:3px solid var(--clic-amarelo);outline-offset:3px}
 .clic-ferramenta__icone{
   width:48px;height:48px;border-radius:12px;background:var(--clic-azul-claro);
   display:flex;align-items:center;justify-content:center;color:var(--clic-azul-aco);
@@ -120,11 +127,13 @@
 }
 .clic-recurso__botao:hover{background:var(--clic-amarelo-hover)}
 @media (max-width:575.98px){.clic-recurso__botao{width:100%}}
-.clic-recurso__mock .clic-mockup{overflow:hidden}
-.clic-recurso--fin .clic-mockup{height:593px}
-.clic-recurso--proj .clic-mockup{height:440px}
-.clic-recurso--horas .clic-mockup{height:499px}
-.clic-recurso--reemb .clic-mockup{height:483px}
+/* Alturas do Figma como mínimo: o conteúdo nunca é cortado */
+.clic-recurso__mock .clic-mockup{display:flex;flex-direction:column}
+.clic-recurso__mock .clic-mockup__area{flex:1}
+.clic-recurso--fin .clic-mockup{min-height:593px}
+.clic-recurso--proj .clic-mockup{min-height:440px}
+.clic-recurso--horas .clic-mockup{min-height:499px}
+.clic-recurso--reemb .clic-mockup{min-height:483px}
 
 /* ---------- Benefícios ---------- */
 .clic-beneficios{background:var(--clic-azul-claro)}
@@ -133,10 +142,10 @@
 }
 .clic-beneficio{
   background:#fff;border:1px solid var(--clic-borda);border-radius:12px;
-  padding:32px 16px;display:flex;flex-direction:column;gap:24px;height:285px;
+  padding:32px 16px;display:flex;flex-direction:column;gap:24px;min-height:285px;
   transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
 }
-.clic-beneficio:hover{transform:translateY(-4px);box-shadow:var(--clic-sombra);border-color:var(--clic-azul-aco)}
+.clic-beneficio:hover,.clic-beneficio:focus-within{transform:translateY(-4px);box-shadow:var(--clic-sombra);border-color:var(--clic-azul-aco)}
 .clic-beneficio__icone{
   width:48px;height:48px;border-radius:24px;background:var(--clic-amarelo);
   display:flex;align-items:center;justify-content:center;
@@ -218,7 +227,6 @@
   .clic-hero__dir{width:100%}
   .clic-hero__composicao{width:560px;max-width:100%;height:440px}
   .clic-hero__titulo{font-size:clamp(40px,5vw,62px)}
-  .clic-hero__marca{display:none}
   .clic-recurso__conteudo{flex-direction:column}
   .clic-recurso__texto{width:100%}
   .clic-recurso__mock{width:100%;display:flex;justify-content:center}
@@ -226,7 +234,9 @@
   .clic-beneficios__grade{grid-template-columns:1fr}
 }
 @media (max-width:767.98px){
-  .clic-recurso__mock{justify-content:flex-start;overflow-x:auto}
+  /* o mockup (600px) é reduzido proporcionalmente por js/mockups.js */
+  .clic-recurso__mock{justify-content:flex-start;align-items:flex-start;overflow:hidden}
+  .clic-recurso__mock .clic-mockup{transform-origin:top left}
   .clic-recurso__mock .clic-mockup{width:600px;min-width:600px}
   .clic-hero{padding:64px 0}
   .clic-hero__composicao{height:auto;padding:24px 0}

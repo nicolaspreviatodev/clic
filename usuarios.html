@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{if(!sessionStorage.getItem("clic.sessao")&&!localStorage.getItem("clic.sessao")){location.replace("entrar.html");}}catch(e){}})();</script>
 <div class="clic-app">
   <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
     <a class="clic-sidebar__logo" href="dashboard-financeiro.html" aria-label="CLIC — dashboard">
@@ -26,7 +27,7 @@
       <a class="clic-menu-btn" href="financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</a>
       <a class="clic-menu-btn" href="projetos.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="M9 13h6"/></svg>Projetos</a>
       <a class="clic-menu-btn" href="horas.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>Horas</a>
-      <a class="clic-menu-btn" href="em-construcao.html?secao=Reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
+      <a class="clic-menu-btn" href="em-construcao.html?secao=reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
       <a class="clic-menu-btn" href="usuarios.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Usuários</a>
     </nav>
     <div class="clic-sidebar__perfil">
@@ -39,35 +40,67 @@
   <main class="clic-app__main">
     <div class="app-topo">
       <h1 class="clic-app__titulo">Usuários e perfis</h1>
-      <button class="app-btn-novo" type="button" data-novo-usuario><svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Novo usuário</a>
+      <button class="app-btn-novo" type="button" data-novo-usuario><svg class="ic ic-18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Novo usuário</button>
     </div>
     <div class="app-filtros">
       <div class="app-filtros__grupo">
         <div class="clic-busca" style="width:220px">
-          <input class="clic-input" placeholder="Buscar por nome ou e-mail" aria-label="Buscar por nome ou e-mail">
+          <input class="clic-input" id="busca-usuarios" placeholder="Buscar por nome ou e-mail" aria-label="Buscar por nome ou e-mail">
           <span class="clic-busca__icone"><svg class="ic ic-14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
         </div>
-        <button class="clic-input clic-input--select" type="button">Perfil: Todos</button>
-        <button class="clic-input clic-input--select" type="button">Status: Todos</button>
+        <select class="clic-input clic-input--select" id="f-perfil" aria-label="Perfil"></select>
+        <select class="clic-input clic-input--select" id="f-status" aria-label="Status"></select>
       </div>
     </div>
+
     <div class="clic-tabela-wrap">
       <div class="table-responsive">
-        <table class="clic-tabela">
+        <table class="clic-tabela" id="tabela-usuarios">
           <thead>
             <tr><th>Nome</th><th>E-mail</th><th>Perfil</th><th>Status</th><th>Último acesso</th><th>Ações</th></tr>
           </thead>
-          <tbody>
-            <tr><td>Carlos Milan</td><td>carloseduardomilann@gmail.com</td><td><span class="clic-badge clic-badge--navy">Administrador</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 09:12</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Carlos Milan">Excluir</button></td></tr>
-            <tr><td>Nicolas Silva</td><td>nicolassilvapreviato@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>06/11 08:40</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Nicolas Silva">Excluir</button></td></tr>
-            <tr><td>Luccas Matheus</td><td>luccas.matheus@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 17:55</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Luccas Matheus">Excluir</button></td></tr>
-            <tr><td>Lucas Willian</td><td>salinhastropa@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>05/11 14:20</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Lucas Willian">Excluir</button></td></tr>
-            <tr><td>Matheus Prudente</td><td>matheusprudente@gmail.com</td><td><span class="clic-badge clic-badge--azul">Funcionário</span></td><td><span class="clic-badge clic-badge--cinza">Inativo</span></td><td>21/10 10:03</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Matheus Prudente">Excluir</button></td></tr>
-            <tr><td>Luiz Bueno</td><td>luizbueno@gmail.com</td><td><span class="clic-badge clic-badge--amarelo">Gestor</span></td><td><span class="clic-badge clic-badge--azul">Ativo</span></td><td>04/11 11:30</td><td><a class="acao-editar" href="usuario-editar.html">Editar</a> <button class="acao-excluir" type="button" data-excluir="Luiz Bueno">Excluir</button></td></tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
+
+    <div class="modal fade" id="modal-usuario" tabindex="-1" aria-labelledby="modal-usuario-titulo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-clic-medio">
+        <div class="modal-content">
+          <form id="form-usuario" novalidate>
+            <div class="modal-header">
+              <h2 class="modal-title modal-titulo" id="modal-usuario-titulo">Novo usuário</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body modal-corpo">
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="u-nome">Nome</label>
+                <input class="clic-campo__input" id="u-nome" autocomplete="name" required>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="u-email">E-mail</label>
+                <input class="clic-campo__input" id="u-email" type="email" autocomplete="email" required>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="u-perfil">Perfil</label>
+                <select class="clic-campo__input" id="u-perfil">
+                  <option>Administrador</option><option selected>Gestor</option><option>Funcionário</option>
+                </select>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="u-status">Status</label>
+                <select class="clic-campo__input" id="u-status"><option selected>Ativo</option><option>Inativo</option></select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="clic-btn-app clic-btn-app--contorno" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="clic-btn-app">Criar usuário</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <div class="modal fade" id="modal-excluir" tabindex="-1" aria-labelledby="modal-excluir-titulo" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" style="max-width:420px">
         <div class="modal-content" style="border-radius:12px;border-color:var(--clic-borda)">
@@ -88,7 +121,13 @@
   </main>
 </div>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/sessao.js" defer></script>
+<script src="js/formatadores.js" defer></script>
+<script src="js/dados.js" defer></script>
+<script src="js/toasts.js" defer></script>
+<script src="js/ui.js" defer></script>
 <script src="js/app.js" defer></script>
+<script src="js/usuarios.js" defer></script>
 
 </body>
 </html>

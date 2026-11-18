@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<script>/* guarda de sessão: roda antes da tela pintar */(function(){try{if(!sessionStorage.getItem("clic.sessao")&&!localStorage.getItem("clic.sessao")){location.replace("entrar.html");}}catch(e){}})();</script>
 <div class="clic-app">
   <aside class="clic-sidebar" id="sidebar" aria-label="Menu lateral">
     <a class="clic-sidebar__logo" href="dashboard-financeiro.html" aria-label="CLIC — dashboard">
@@ -26,7 +27,7 @@
       <a class="clic-menu-btn" href="financeiro.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>Financeiro</a>
       <a class="clic-menu-btn" href="projetos.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="M9 13h6"/></svg>Projetos</a>
       <a class="clic-menu-btn" href="horas.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg>Horas</a>
-      <a class="clic-menu-btn" href="em-construcao.html?secao=Reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
+      <a class="clic-menu-btn" href="em-construcao.html?secao=reembolso"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg>Reembolso</a>
       <a class="clic-menu-btn" href="usuarios.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>Usuários</a>
     </nav>
     <div class="clic-sidebar__perfil">
@@ -43,9 +44,9 @@
 
     <div class="app-filtros">
       <div class="app-filtros__grupo">
-        <button class="clic-input clic-input--select" type="button">Período: out/2026</button>
-        <button class="clic-input clic-input--select" type="button">Projeto: Todos</button>
-        <button class="clic-input clic-input--select" type="button">Tipo: Todos</button>
+        <select class="clic-input clic-input--select" id="filtro-periodo" aria-label="Período"></select>
+        <select class="clic-input clic-input--select" id="filtro-projeto" aria-label="Projeto"></select>
+        <select class="clic-input clic-input--select" id="filtro-tipo" aria-label="Tipo"></select>
         <button class="clic-btn-icone" type="button" data-bs-toggle="tooltip" title="Filtrar" aria-label="Filtrar">
           <svg class="ic ic-20" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg>
         </button>
@@ -55,47 +56,101 @@
       </div>
     </div>
 
-    <div class="clic-kpis app-secao">
+    <div class="clic-kpis app-secao" id="kpi-financeiro">
       <div class="clic-kpi">
         <p class="clic-kpi__rotulo">Entradas</p>
-        <p class="clic-kpi__valor">R$ 48.000,00</p>
+        <p class="clic-kpi__valor">R$ 0,00</p>
       </div>
       <div class="clic-kpi">
         <p class="clic-kpi__rotulo">Saídas</p>
-        <p class="clic-kpi__valor">R$ 7.257,00</p>
+        <p class="clic-kpi__valor">R$ 0,00</p>
       </div>
       <div class="clic-kpi clic-kpi--escuro">
         <p class="clic-kpi__rotulo">Saldo</p>
-        <p class="clic-kpi__valor">R$ 40.743,00</p>
+        <p class="clic-kpi__valor">R$ 0,00</p>
       </div>
     </div>
 
     <div class="clic-tabela-wrap">
       <div class="table-responsive">
-        <table class="clic-tabela">
+        <table class="clic-tabela" id="tabela-financeiro">
           <thead>
             <tr>
               <th>Data</th><th>Descrição</th><th>CC</th><th>Projeto</th><th>Categoria</th>
               <th>Nota fiscal</th><th>Custo de projeto</th><th>Tipo</th><th class="num">Valor</th><th>Pago</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td>02/10</td><td>Pagamento do cliente</td><td>26124</td><td>Projeto Alfa</td><td>Receita</td><td>NF 1042</td><td>—</td><td class="pos">Entrada</td><td class="num">R$ 20.000,00</td><td>—</td></tr>
-            <tr><td>05/10</td><td>Licença de software</td><td>26125</td><td>Projeto Beta</td><td>Custo direto</td><td>NF 3381</td><td>Sim</td><td class="neg">Saída</td><td class="num">R$ 1.200,00</td><td><span class="clic-badge clic-badge--sim">Sim</span></td></tr>
-            <tr><td>08/10</td><td>Táxi até o cliente</td><td>26126</td><td>Projeto Alfa</td><td>Reembolso</td><td>—</td><td>Sim</td><td class="neg">Saída</td><td class="num">R$ 85,00</td><td><span class="clic-badge clic-badge--sim">Sim</span></td></tr>
-            <tr><td>10/10</td><td>Aluguel do escritório</td><td>26127</td><td>Projeto Alfa</td><td>Custo indireto</td><td>NF 7720</td><td>Não</td><td class="neg">Saída</td><td class="num">R$ 4.500,00</td><td><span class="clic-badge clic-badge--nao">Não</span></td></tr>
-            <tr><td>11/10</td><td>Pagamento do cliente</td><td>26128</td><td>Projeto Beta</td><td>Receita</td><td>NF 1043</td><td>—</td><td class="pos">Entrada</td><td class="num">R$ 28.000,00</td><td>—</td></tr>
-            <tr><td>12/10</td><td>Hospedagem do servidor</td><td>26129</td><td>Projeto Alfa</td><td>Custo direto</td><td>NF 3402</td><td>Sim</td><td class="neg">Saída</td><td class="num">R$ 350,00</td><td><span class="clic-badge clic-badge--sim">Sim</span></td></tr>
-            <tr><td>13/10</td><td>Internet e energia</td><td>26130</td><td>Projeto Beta</td><td>Custo indireto</td><td>NF 7731</td><td>Não</td><td class="neg">Saída</td><td class="num">R$ 980,00</td><td><span class="clic-badge clic-badge--nao">Não</span></td></tr>
-            <tr><td>14/10</td><td>Almoço com cliente</td><td>26131</td><td>Projeto Alfa</td><td>Reembolso</td><td>—</td><td>Sim</td><td class="neg">Saída</td><td class="num">R$ 142,00</td><td><span class="clic-badge clic-badge--sim">Sim</span></td></tr>
-          </tbody>
+          <tbody></tbody>
         </table>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-lancamento" tabindex="-1" aria-labelledby="modal-lancamento-titulo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-clic-largo">
+        <div class="modal-content">
+          <form id="form-lancamento" novalidate>
+            <div class="modal-header">
+              <h2 class="modal-title modal-titulo" id="modal-lancamento-titulo">Novo lançamento</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body modal-corpo modal-corpo--grade">
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-descricao">Descrição</label>
+                <input class="clic-campo__input" id="novo-descricao" required>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-data">Data</label>
+                <input class="clic-campo__input" id="novo-data" type="date">
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-valor">Valor</label>
+                <input class="clic-campo__input" id="novo-valor" inputmode="decimal" placeholder="0,00" required>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-tipo">Tipo</label>
+                <select class="clic-campo__input" id="novo-tipo"><option>Entrada</option><option>Saída</option></select>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-projeto">Projeto</label>
+                <select class="clic-campo__input" id="novo-projeto"></select>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-cc">Centro de custo</label>
+                <input class="clic-campo__input" id="novo-cc" placeholder="26038">
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-categoria">Categoria</label>
+                <select class="clic-campo__input" id="novo-categoria">
+                  <option>Receita</option><option>Custo direto</option><option>Custo indireto</option><option>Reembolso</option>
+                </select>
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-nota">Nota fiscal</label>
+                <input class="clic-campo__input" id="novo-nota" placeholder="NF 1042">
+              </div>
+              <div class="clic-campo">
+                <label class="clic-campo__label" for="novo-custo">Custo de projeto</label>
+                <select class="clic-campo__input" id="novo-custo"><option>—</option><option>Sim</option><option>Não</option></select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="clic-btn-app clic-btn-app--contorno" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="clic-btn-app">Salvar</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </main>
 </div>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+<script src="js/sessao.js" defer></script>
+<script src="js/formatadores.js" defer></script>
+<script src="js/dados.js" defer></script>
+<script src="js/toasts.js" defer></script>
+<script src="js/ui.js" defer></script>
 <script src="js/app.js" defer></script>
+<script src="js/financeiro.js" defer></script>
 
 </body>
 </html>

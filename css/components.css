@@ -459,3 +459,107 @@ input.clic-input,select.clic-input{appearance:none}
 .clic-hero{position:relative;overflow:hidden}
 .clic-flex{display:flex}
 .clic-col{display:flex;flex-direction:column}
+
+/* =====================================================
+   COMPONENTES DA FASE 2
+   ===================================================== */
+
+/* ---------- Toasts ---------- */
+.clic-toasts{
+  position:fixed;top:16px;right:16px;z-index:1080;
+  display:flex;flex-direction:column;gap:10px;max-width:320px;
+}
+.clic-toast{
+  display:flex;align-items:flex-start;gap:10px;
+  background:#fff;border:1px solid var(--clic-borda);border-radius:12px;
+  padding:14px 16px;box-shadow:0 8px 24px rgba(12,60,103,.08);
+  font:400 14px/20px var(--clic-font-inter);color:var(--clic-texto-app);
+  opacity:0;transform:translateY(-8px);
+  transition:opacity .2s ease,transform .2s ease;
+}
+.clic-toast.visivel{opacity:1;transform:none}
+.clic-toast .ic{margin-top:1px}
+
+/* ---------- Estado vazio de tabela ---------- */
+.clic-tabela tbody tr.linha-vazia:hover{background:transparent}
+.clic-tabela tbody tr.linha-vazia td{
+  height:96px;text-align:center;font:400 14px/17px var(--clic-font-inter);color:#647481;
+}
+.clic-tabela tbody tr.linha-vazia .ic{
+  display:inline-block;vertical-align:-4px;margin-right:8px;color:#647481;
+}
+
+/* ---------- Colunas ordenáveis ---------- */
+.clic-tabela thead th.ordenavel{cursor:pointer}
+.clic-tabela thead th.ordenavel:hover,
+.clic-tabela thead th.ordenada{color:var(--clic-amarelo)}
+.clic-tabela thead th .th-seta{
+  display:inline-block;vertical-align:-2px;margin-left:6px;
+}
+
+/* ---------- Badge clicável (Pago) ---------- */
+button.clic-badge{border:none;cursor:pointer;transition:filter .18s ease}
+button.clic-badge:hover{filter:brightness(.96)}
+
+/* ---------- Botão voltar ao topo ---------- */
+.clic-voltar-topo{
+  position:fixed;right:24px;bottom:24px;z-index:1030;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--clic-navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(12,60,103,.08);
+  opacity:0;pointer-events:none;
+  transition:opacity .2s ease,background-color .18s ease;
+}
+.clic-voltar-topo.visivel{opacity:1;pointer-events:auto}
+.clic-voltar-topo:hover{background:var(--clic-azul-aco)}
+
+/* ---------- Pular para o conteúdo ---------- */
+.pular-conteudo:focus{
+  position:fixed;left:16px;top:16px;z-index:1090;
+  background:var(--clic-navy);color:#fff;padding:10px 16px;border-radius:8px;
+  font:600 14px/17px var(--clic-font-inter);
+}
+
+/* ---------- Campos de modal ---------- */
+.modal .clic-campo{gap:6px}
+.modal .clic-campo__label{font:600 13px/17px var(--clic-font-inter)}
+.modal .clic-campo__input{height:44px;font-size:14px}
+.modal .modal-content{border-radius:12px;border:1px solid var(--clic-borda)}
+
+/* ---------- Gráficos: tooltip e legenda liga/desliga ---------- */
+.clic-chart{position:relative}
+.clic-chart svg{display:block;overflow:visible}
+.clic-chart svg rect,.clic-chart svg path{transition:opacity .15s ease}
+.clic-chart__tip{
+  position:absolute;left:50%;top:-6px;transform:translate(-50%,-100%);
+  background:var(--clic-navy);color:#F5F5F5;border-radius:6px;
+  padding:6px 10px;font:400 12px/15px var(--clic-font-inter);
+  white-space:nowrap;pointer-events:none;opacity:0;
+  transition:opacity .15s ease;z-index:2;
+}
+.clic-chart__tip.visivel{opacity:1}
+.dash-barras__legenda .clic-legenda-toggle{cursor:pointer;user-select:none}
+.dash-barras__legenda .clic-legenda-toggle:hover{color:var(--clic-navy)}
+.dash-barras__legenda .clic-legenda-toggle.desligada{opacity:.45;text-decoration:line-through}
+
+/* ---------- Filtro de projetos: rótulo + campo ---------- */
+.projeto-filtro{display:flex;flex-direction:column;gap:4px;width:248px;min-width:0}
+.projeto-filtro__label{font:700 12px/15px var(--clic-font-inter);color:var(--clic-texto-app)}
+@media (max-width:1199.98px){.projeto-filtro{width:100%}}
+
+/* ---------- Classes que substituíram estilos inline ---------- */
+.aviso-js{
+  position:fixed;left:0;right:0;bottom:0;z-index:1090;
+  background:var(--clic-navy);color:#fff;padding:10px 16px;text-align:center;
+  font:600 14px/17px var(--clic-font-inter);
+}
+.modal-titulo{font:700 18px var(--clic-font-inter);color:var(--clic-navy)}
+.modal-clic-largo{max-width:560px}
+.modal-clic-medio{max-width:480px}
+.modal-corpo{display:flex;flex-direction:column;gap:16px}
+.modal-corpo--grade{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:575.98px){.modal-corpo--grade{grid-template-columns:1fr}}
+.clic-btn-icone--48{width:48px;height:48px;align-self:flex-end}
+.construcao__texto{font:400 16px/26px var(--clic-font-inter);color:var(--clic-texto-app)}
+.construcao__acao{margin-top:24px}
